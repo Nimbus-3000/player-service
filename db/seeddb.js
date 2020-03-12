@@ -47,9 +47,8 @@ var comments = () => {
 
 
 const seedData = [];
-
 while (seedData.length <= 10) {
-    seedData.push(
+    let song = new Song(
         {
             artistName: firstname(),
             songTitle: songTitle(),
@@ -60,6 +59,7 @@ while (seedData.length <= 10) {
             comments: comments()
         }
     )
+    seedData.push(song)
 }
 
 Song.collection.insertMany(seedData);
