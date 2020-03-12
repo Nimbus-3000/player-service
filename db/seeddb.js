@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost:27017/top_player_db', {useNewUrlParser: true});
 
 var db = mongoose.connection;
-// var Schema = mongoose.Schema;
 
 var songSchema = new mongoose.Schema({
     artistName: String,
@@ -18,7 +17,7 @@ var songSchema = new mongoose.Schema({
             {
                 username: String,   
                 avatar: String,
-                comment: String,
+                comment: String
             }	
         ]
 })
