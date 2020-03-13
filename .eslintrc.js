@@ -22,6 +22,7 @@ module.exports = {
   plugins: [
     'react',
   ],
+  ignorePatterns: ['bundle.js', 'node_modules/', 'jest.config.js', 'package.json', 'webpack.config.js'],
   rules: {
   },
 };
