@@ -21,7 +21,6 @@ const songSchema = new mongoose.Schema({
 const Song = mongoose.model('Song', songSchema);
 
 const getAllSongs = (callback) => {
-  console.log('getAllSongs function called!!');
   Song.find({})
     .then((data) => {
       callback(null, data);
