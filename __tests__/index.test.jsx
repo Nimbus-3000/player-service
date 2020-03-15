@@ -14,6 +14,7 @@ describe('Unit Tests', () => {
 
   test('should get info for one song on component mount', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.state.song).toBeDefined();
+    // wrapper.setState({ test: undefined });
+    expect(wrapper.instance().state.song.toBeDefined());
   });
 });

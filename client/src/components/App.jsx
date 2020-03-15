@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      song: {},
+      song: undefined,
     };
   }
 
@@ -13,7 +13,7 @@ class App extends React.Component {
     $.get('/songData')
       .done((data) => {
         this.setState({ song: data });
-        // console.log(this.state.songs);
+        console.log(this.state.song);
       })
       .fail(() => {
         console.log('error with get request');
