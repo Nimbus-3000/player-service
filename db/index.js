@@ -32,4 +32,16 @@ const getAllSongs = (callback) => {
     });
 };
 
+const getOneSong = (callback) => {
+  Song.find({})
+    .limit(1)
+    .then((data) => {
+      callback(null, data);
+    })
+    .catch(() => {
+      callback(true);
+    });
+};
+
 module.exports.getAllSongs = getAllSongs;
+module.exports.getOneSong = getOneSong;

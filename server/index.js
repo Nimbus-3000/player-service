@@ -18,7 +18,7 @@ app.listen(port, () => {
 });
 
 app.get('/songData', (req, res) => {
-  database.getAllSongs((err, data) => {
+  database.getOneSong((err, data) => {
     if (err) {
       res.sendStatus(404);
     }

@@ -5,20 +5,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      songs: [],
+      song: {},
     };
   }
 
-  // componentDidMount() {
-  //   $.get('/songData')
-  //     .done((data) => {
-  //       this.setState({ songs: data });
-  //       console.log(this.state.songs);
-  //     })
-  //     .fail(() => {
-  //       console.log('error with get request');
-  //     });
-  // }
+  componentDidMount() {
+    $.get('/songData')
+      .done((data) => {
+        this.setState({ song: data });
+        // console.log(this.state.songs);
+      })
+      .fail(() => {
+        console.log('error with get request');
+      });
+  }
 
   render() {
     return (
