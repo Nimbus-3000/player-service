@@ -7,7 +7,8 @@
     "test": "jest",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "seedmongo": "node db/seeddb.js"
   },
   "repository": {
     "type": "git",
