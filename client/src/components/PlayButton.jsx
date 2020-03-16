@@ -2,7 +2,7 @@
 import React from 'react';
 
 const PlayButton = (props) => {
-  // console.log(props.song[0]);
+  console.log(props);
 
   return (
     <div>PLAY BUTTON</div>

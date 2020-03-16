@@ -12,8 +12,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      song: undefined,
+      song: [],
     };
+    this.getSongData = this.getSongData.bind(this);
+  }
+
+  componentDidMount() {
+    this.getSongData();
   }
 
   getSongData() {
@@ -29,15 +34,20 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        testing 123
-        <PlayButton />
-        <AlbumCover />
-        <MediaImage />
-        <SongInfo />
-      </div>
-    );
+    const songData = this.state.song[0];
+    // console.log(songData);
+    if (songData) {
+      return (
+        <div>
+          testing 123
+          <PlayButton songTitle={songData.songTitle} artistName={songData.artistName} />
+          <AlbumCover />
+          <MediaImage />
+          <SongInfo />
+        </div>
+      );
+    }
+    return (null);
   }
 }
 
