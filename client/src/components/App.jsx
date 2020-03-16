@@ -4,6 +4,9 @@ import React from 'react';
 import $ from 'jquery';
 
 import PlayButton from './PlayButton.jsx';
+import AlbumCover from './AlbumCover.jsx';
+import MediaImage from './MediaImage.jsx';
+import SongInfo from './SongInfo.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +16,7 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  getSongData() {
     $.get('/songData')
       .done((data) => {
         this.setState({ song: data });
@@ -26,14 +29,15 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.song) {
-      return (
-        <div>
-          testing 123
-          <PlayButton song={this.state.song} />
-        </div>
-      );
-    }
+    return (
+      <div>
+        testing 123
+        <PlayButton />
+        <AlbumCover />
+        <MediaImage />
+        <SongInfo />
+      </div>
+    );
   }
 }
 
