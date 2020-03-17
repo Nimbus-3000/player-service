@@ -38,9 +38,8 @@ class App extends React.Component {
     // console.log(songData);
     if (songData) {
       return (
-        <div>
-          testing 123
-          <PlayButton songTitle={songData.songTitle} artistName={songData.artistName} />
+        <div className="TP-topPlayer">
+          <PlayButton className="TP-playComponent" songTitle={songData.songTitle} artistName={songData.artistName} />
           <AlbumCover />
           <MediaImage />
           <SongInfo />

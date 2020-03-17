@@ -1,0 +1,30 @@
+.TP-topPlayer {
+  height: 380px;
+  background-color: darkkhaki;
+  padding: 30px;
+}
+
+.TP-playComponent {
+  display: inline-flex;
+  height: 63px;
+  width: 490px;
+}
+
+.TP-playButton {
+  height: 60px;
+  width: 60px;
+  background-color: darkorange;
+  border-radius: 50%;
+}
+
+.TP-playSongInfo {
+  display: inline-block;
+}
+
+.TP-songTitle {
+  display: block;
+}
+
+.TP-artistName {
+  display: block;
+}
