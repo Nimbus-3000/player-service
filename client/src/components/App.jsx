@@ -13,8 +13,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       song: [],
+      isPlaying: false,
     };
     this.getSongData = this.getSongData.bind(this);
+    this.playSong = this.playSong.bind(this);
   }
 
   componentDidMount() {
@@ -33,13 +35,31 @@ class App extends React.Component {
       });
   }
 
+  playSong(audioFile) {
+    const audio = new Audio(audioFile);
+    if (!this.state.isPlaying) {
+      audio.play();
+    } else if (this.state.isPlaying) {
+      audio.pause();
+    }
+    // this.setState((state) => {
+    //   return { isPlaying: !state.isPlaying };
+    // });
+  }
+
   render() {
     const songData = this.state.song[0];
     // console.log(songData);
     if (songData) {
       return (
         <div className="TP-topPlayer">
-          <PlayButton className="TP-playComponent" songTitle={songData.songTitle} artistName={songData.artistName} />
+          <PlayButton
+            className="TP-playComponent"
+            songTitle={songData.songTitle}
+            artistName={songData.artistName}
+            mediaFile={songData.mediaFile}
+            playSong={this.playSong}
+          />
           <AlbumCover />
           <MediaImage />
           <SongInfo />
