@@ -13,7 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       song: [],
-      isPlaying: false,
+      isPlaying: 'PLAY',
     };
     this.getSongData = this.getSongData.bind(this);
     this.playSong = this.playSong.bind(this);
@@ -36,14 +36,14 @@ class App extends React.Component {
   }
 
   playSong(audio) {
-    if (!this.state.isPlaying) {
+    if (this.state.isPlaying === 'PLAY') {
       audio.play();
       console.log('song playing');
-      this.setState({ isPlaying: true });
-    } else if (this.state.isPlaying) {
+      this.setState({ isPlaying: 'PAUSE' });
+    } else if (this.state.isPlaying === 'PAUSE') {
       audio.pause();
       console.log('song paused');
-      this.setState({ isPlaying: false });
+      this.setState({ isPlaying: 'PLAY' });
     }
   }
 
@@ -59,6 +59,7 @@ class App extends React.Component {
             artistName={songData.artistName}
             mediaFile={songData.mediaFile}
             playSong={this.playSong}
+            isPlaying={this.state.isPlaying}
           />
           <AlbumCover />
           <MediaImage />

@@ -18,7 +18,7 @@ const PlayButton = (props) => {
           className="TP-playButton"
           onClick={playButtonClick}
         >
-          PLAY
+          {props.isPlaying}
         </button>
       </div>
       <div className="TP-playSongInfo">
