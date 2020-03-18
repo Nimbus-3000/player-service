@@ -35,16 +35,16 @@ class App extends React.Component {
       });
   }
 
-  playSong(audioFile) {
-    const audio = new Audio(audioFile);
+  playSong(audio) {
     if (!this.state.isPlaying) {
       audio.play();
+      console.log('song playing');
+      this.setState({ isPlaying: true });
     } else if (this.state.isPlaying) {
       audio.pause();
+      console.log('song paused');
+      this.setState({ isPlaying: false });
     }
-    // this.setState((state) => {
-    //   return { isPlaying: !state.isPlaying };
-    // });
   }
 
   render() {
