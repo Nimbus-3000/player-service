@@ -1,8 +1,9 @@
 .TP-topPlayer {
-  height: 380px;
+  height: 330px;
   background: linear-gradient(135deg, rgb(110, 103, 53) 0%, rgb(39, 39, 37) 100%);
   padding: 30px;
   max-width: 1240px;
+  position: relative;
 }
 
 .TP-playComponent {
@@ -92,4 +93,18 @@
   word-break: break-word;
   box-decoration-break: clone;
 
+}
+
+.TP-artContainer {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 1;
+  width: 340px;
+  height: 340px;
+}
+
+.TP-albumArt {
+  width: 340px;
+  height: 340px;
 }

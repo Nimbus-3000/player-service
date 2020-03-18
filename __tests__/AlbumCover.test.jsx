@@ -11,4 +11,10 @@ describe('Unit Tests', () => {
     const wrapper = shallow(<AlbumCover />);
     expect(wrapper).toExist();
   });
+
+  test('should invoke modal function on click', () => {
+    const 
+    const wrapper = shallow(<AlbumCover />);
+    expect(wrapper).toExist();
+  });
 });

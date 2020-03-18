@@ -59,7 +59,9 @@ class App extends React.Component {
             // // pauseSong={this.pauseSong}
             // isPlaying={this.state.isPlaying}
           />
-          <AlbumCover />
+          <AlbumCover
+            albumArt={songData.albumCover}
+          />
           <MediaImage />
           <SongInfo />
         </div>

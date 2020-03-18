@@ -3,7 +3,9 @@ import React from 'react';
 const AlbumCover = (props) => {
 
   return (
-    <div>ALBUM COVER</div>
+    <div className="TP-artContainer">
+      <img className="TP-albumArt" src={props.albumArt} alt="" />
+    </div>
   );
 };
 
