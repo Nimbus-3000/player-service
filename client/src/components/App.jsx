@@ -16,7 +16,8 @@ class App extends React.Component {
       isPlaying: 'PLAY',
     };
     this.getSongData = this.getSongData.bind(this);
-    this.playSong = this.playSong.bind(this);
+    // this.playSong = this.playSong.bind(this);
+    // this.pauseSong = this.pauseSong.bind(this);
   }
 
   componentDidMount() {
@@ -35,21 +36,17 @@ class App extends React.Component {
       });
   }
 
-  playSong(audio) {
-    if (this.state.isPlaying === 'PLAY') {
-      audio.play();
-      console.log('song playing');
-      this.setState({ isPlaying: 'PAUSE' });
-    } else if (this.state.isPlaying === 'PAUSE') {
-      audio.pause();
-      console.log('song paused');
-      this.setState({ isPlaying: 'PLAY' });
-    }
-  }
+  // playSong(audio) {
+  //   audio.play();
+  // }
+
+  // pauseSong(audio) {
+  //   audio.pause();
+  // }
 
   render() {
     const songData = this.state.song[0];
-    // console.log(songData);
+
     if (songData) {
       return (
         <div className="TP-topPlayer">
@@ -58,8 +55,9 @@ class App extends React.Component {
             songTitle={songData.songTitle}
             artistName={songData.artistName}
             mediaFile={songData.mediaFile}
-            playSong={this.playSong}
-            isPlaying={this.state.isPlaying}
+            // playSong={this.playSong}
+            // // pauseSong={this.pauseSong}
+            // isPlaying={this.state.isPlaying}
           />
           <AlbumCover />
           <MediaImage />

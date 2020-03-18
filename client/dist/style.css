@@ -2,6 +2,7 @@
   height: 380px;
   background: linear-gradient(135deg, rgb(110, 103, 53) 0%, rgb(39, 39, 37) 100%);
   padding: 30px;
+  max-width: 1240px;
 }
 
 .TP-playComponent {

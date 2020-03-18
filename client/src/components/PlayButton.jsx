@@ -5,8 +5,20 @@ import React from 'react';
 const PlayButton = (props) => {
   const audio = new Audio(props.mediaFile);
 
+  const playSong = (song) => {
+    song.play();
+  };
+
+  const pauseSong = (song) => {
+    song.pause();
+  };
+
   const playButtonClick = () => {
-    props.playSong(audio);
+    if (audio.paused) {
+      playSong(audio);
+    } else if (!audio.paused) {
+      pauseSong(audio);
+    }
   };
 
   return (
@@ -18,7 +30,7 @@ const PlayButton = (props) => {
           className="TP-playButton"
           onClick={playButtonClick}
         >
-          {props.isPlaying}
+          {}
         </button>
       </div>
       <div className="TP-playSongInfo">
