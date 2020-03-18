@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">72.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/15</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">72.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/15</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
@@ -129,7 +129,9 @@
 <a name='L70'></a><a href='#L70'>70</a>
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,8 +149,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,11 +170,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,6 +182,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,8 +223,8 @@ class App extends React.Component {
       isPlaying: 'PLAY',
     };
     this.getSongData = this.getSongData.bind(this);
-    this.playSong = this.playSong.bind(this);
-    this.pauseSong = this.pauseSong.bind(this);
+    // this.playSong = this.playSong.bind(this);
+    // this.pauseSong = this.pauseSong.bind(this);
   }
 &nbsp;
   componentDidMount() {
@@ -239,17 +243,17 @@ class App extends React.Component {
       });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  pl</span>aySong(audio) {
-<span class="cstat-no" title="statement not covered" >    audio.play();</span>
-  }
+  // playSong(audio) {
+  //   audio.play();
+  // }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  pa</span>useSong(audio) {
-<span class="cstat-no" title="statement not covered" >    audio.pause();</span>
-  }
+  // pauseSong(audio) {
+  //   audio.pause();
+  // }
 &nbsp;
   render() {
     const songData = this.state.song[0];
-    // console.log(songData);
+&nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (songData) {
 <span class="cstat-no" title="statement not covered" >      return (</span>
         &lt;div className="TP-topPlayer"&gt;
@@ -258,11 +262,13 @@ class App extends React.Component {
             songTitle={songData.songTitle}
             artistName={songData.artistName}
             mediaFile={songData.mediaFile}
-            playSong={this.playSong}
-            pauseSong={this.pauseSong}
-            isPlaying={this.state.isPlaying}
+            // playSong={this.playSong}
+            // // pauseSong={this.pauseSong}
+            // isPlaying={this.state.isPlaying}
           /&gt;
-          &lt;AlbumCover /&gt;
+          &lt;AlbumCover
+            albumArt={songData.albumCover}
+          /&gt;
           &lt;MediaImage /&gt;
           &lt;SongInfo /&gt;
         &lt;/div&gt;
@@ -280,7 +286,7 @@ export default App;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Mar 18 2020 13:42:48 GMT-0700 (PDT)
+                at Wed Mar 18 2020 15:31:29 GMT-0700 (PDT)
             </div>
         </div>
         <script src="prettify.js"></script>

@@ -9,12 +9,21 @@ configure({ adapter: new Adapter() });
 describe('Unit Tests', () => {
   test('should render the app component on the screen', () => {
     const wrapper = shallow(<AlbumCover />);
-    expect(wrapper).toExist();
+    expect(wrapper).toHaveLength(1);
   });
 
-  test('should invoke modal function on click', () => {
-    const 
+  test('should open modal when art is clicked', () => {
     const wrapper = shallow(<AlbumCover />);
-    expect(wrapper).toExist();
+    const art = wrapper.find('#art');
+    art.simulate('click');
+    expect(wrapper.state().showModal).toBe(true);
   });
+
+  test('should close modal on click', () => {
+    const wrapper = shallow(<AlbumCover />);
+    const art = wrapper.find('#art');
+    art.simulate('click');
+    expect(wrapper.state().showModal).toBe(true);
+  });
+
 });
