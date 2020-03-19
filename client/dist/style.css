@@ -149,6 +149,7 @@ h1 {
   font: 12px/1.4 Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
   color: #333;
   box-sizing: border-box;
+  z-index: 3;
 }
 
 .TP-modalContent {
@@ -245,7 +246,7 @@ h1 {
   position: absolute;
   margin-bottom: 30px;
   height: 100px;
-  z-index: 1;
+  z-index: 0;
   display: block;
 }
 
@@ -253,9 +254,9 @@ h1 {
   left: 20px;
   right: 380px;
   bottom: 0;
-  position: absolute;
+  /* position: absolute; */
   height: 50px;
-  z-index: 2;
+  z-index: 0;
   display: block;
 }
 
@@ -267,4 +268,15 @@ h1 {
 .TP-avatar {
   height: 20px;
   width: 20px;
+  z-index: 0;
+}
+
+.TP-waveDefault {
+  display: block;
+  font-size: 16px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  color: #fff;
+  margin: 5px;
+  z-index: 0;
 }
