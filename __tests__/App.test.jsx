@@ -11,14 +11,16 @@ import App from '../client/src/components/App';
 configure({ adapter: new Adapter() });
 
 describe('Unit Tests', () => {
-  const wrapper = shallow(<App />);
   test('should render the app component on the screen', () => {
+    const wrapper = shallow(<App />);
     expect(wrapper).toExist();
   });
 
-  // test('should render the PlayButton component on the screen', () => {
-  //   expect(wrapper.find(PlayButton)).toExist();
-  // });
+  test('should get songData from database', () => {
+    const wrapper = mount(<App />);
+    wrapper.instance().getSongData();
+    expect(wrapper.state().song).toHaveLength(1);
+  });
 
   // test('should render the AlbumCover component on the screen', () => {
   //   expect(wrapper.find(AlbumCover)).toExist();

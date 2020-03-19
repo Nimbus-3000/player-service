@@ -67,7 +67,9 @@ class App extends React.Component {
             date={songData.postDate}
             tag={songData.tag}
           />
-          <MediaImage />
+          <MediaImage
+            mediaFile={songData.mediaFile}
+          />
         </div>
       );
     }

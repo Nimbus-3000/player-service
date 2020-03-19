@@ -2,45 +2,60 @@
 import React from 'react';
 
 
-const PlayButton = (props) => {
-  const audio = new Audio(props.mediaFile);
+class PlayButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      paused: true,
+    };
+    this.audio = new Audio(props.mediaFile);
+    this.playSong = this.playSong.bind(this);
+    this.pauseSong = this.pauseSong.bind(this);
+    this.playButtonClick = this.playButtonClick.bind(this);
+  }
 
-  const playSong = (song) => {
+  playSong(song) {
     song.play();
-  };
+    this.setState({ paused: song.paused });
+    // console.log(song.paused);
+  }
 
-  const pauseSong = (song) => {
+  pauseSong(song) {
     song.pause();
-  };
+    this.setState({ paused: song.paused });
+    // console.log(song.paused);
+  }
 
-  const playButtonClick = () => {
-    if (audio.paused) {
-      playSong(audio);
-    } else if (!audio.paused) {
-      pauseSong(audio);
+  playButtonClick() {
+    if (this.state.paused) {
+      this.playSong(this.audio);
+    } else if (!this.state.paused) {
+      this.pauseSong(this.audio);
     }
-  };
+  }
 
-  return (
-    <div className="TP-playComponent">
-      <div className="TP-buttonContainer">
-        <button
-          type="button"
-          id="TP-playButton"
-          className="TP-playButton"
-          onClick={playButtonClick}
-        >
-          {}
-        </button>
-      </div>
-      <div className="TP-playSongInfo">
-        <div className="TP-nameContainer">
-          <div className="TP-artistName">{props.artistName}</div>
+  render() {
+    return (
+      <div className="TP-playComponent">
+        <div className="TP-buttonContainer">
+          <button
+            type="button"
+            id="TP-playButton"
+            className="TP-playButton"
+            onClick={this.playButtonClick}
+          >
+            {}
+          </button>
         </div>
-        <div className="TP-songTitle">{props.songTitle}</div>
+        <div className="TP-playSongInfo">
+          <div className="TP-nameContainer">
+            <div className="TP-artistName">{this.props.artistName}</div>
+          </div>
+          <div className="TP-songTitle">{this.props.songTitle}</div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default PlayButton;

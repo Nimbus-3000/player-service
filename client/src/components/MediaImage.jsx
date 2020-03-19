@@ -11,7 +11,7 @@ class MediaImage extends React.Component {
   render() {
     return (
       <div className="TP-mediaImage">
-        <div className={this.state.waveClass}>WAVEFORM</div>
+        <div className={this.state.waveClass}>{this.props.mediaFile}</div>
       </div>
     );
   }
