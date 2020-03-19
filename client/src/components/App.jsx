@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 import PlayButton from './PlayButton.jsx';
 import AlbumCover from './AlbumCover.jsx';
-import MediaImage from './MediaImage.jsx';
+// import MediaImage from './MediaImage.jsx';
 import SongInfo from './SongInfo.jsx';
 
 class App extends React.Component {
@@ -67,9 +67,7 @@ class App extends React.Component {
             date={songData.postDate}
             tag={songData.tag}
           />
-          <MediaImage
-            mediaFile={songData.mediaFile}
-          />
+
         </div>
       );
     }

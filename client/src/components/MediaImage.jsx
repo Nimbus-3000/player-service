@@ -12,6 +12,8 @@ class MediaImage extends React.Component {
     return (
       <div className="TP-mediaImage">
         <div className={this.state.waveClass}>{this.props.mediaFile}</div>
+        <div className={this.state.waveClass}>{`CURRENT TIME: ${this.props.currentTime}`}</div>
+        <div className={this.state.waveClass}>{`DURATION ${this.props.duration}`}</div>
       </div>
     );
   }

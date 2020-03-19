@@ -1,6 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-
+import MediaImage from './MediaImage.jsx';
 
 class PlayButton extends React.Component {
   constructor(props) {
@@ -36,22 +36,29 @@ class PlayButton extends React.Component {
 
   render() {
     return (
-      <div className="TP-playComponent">
-        <div className="TP-buttonContainer">
-          <button
-            type="button"
-            id="TP-playButton"
-            className="TP-playButton"
-            onClick={this.playButtonClick}
-          >
-            {}
-          </button>
-        </div>
-        <div className="TP-playSongInfo">
-          <div className="TP-nameContainer">
-            <div className="TP-artistName">{this.props.artistName}</div>
+      <div>
+        <MediaImage
+          mediaFile={this.props.mediaFile}
+          currentTime={this.audio.currentTime}
+          duration={this.audio.duration}
+        />
+        <div className="TP-playComponent">
+          <div className="TP-buttonContainer">
+            <button
+              type="button"
+              id="TP-playButton"
+              className="TP-playButton"
+              onClick={this.playButtonClick}
+            >
+              {}
+            </button>
           </div>
-          <div className="TP-songTitle">{this.props.songTitle}</div>
+          <div className="TP-playSongInfo">
+            <div className="TP-nameContainer">
+              <div className="TP-artistName">{this.props.artistName}</div>
+            </div>
+            <div className="TP-songTitle">{this.props.songTitle}</div>
+          </div>
         </div>
       </div>
     );
