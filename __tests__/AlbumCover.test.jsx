@@ -21,9 +21,8 @@ describe('Unit Tests', () => {
 
   test('should close modal on click', () => {
     const wrapper = shallow(<AlbumCover />);
-    const art = wrapper.find('#art');
-    art.simulate('click');
-    expect(wrapper.state().showModal).toBe(true);
+    const modal = wrapper.find('.TP-modalContent');
+    modal.simulate('click');
+    expect(wrapper.state().showModal).toBe(false);
   });
-
 });

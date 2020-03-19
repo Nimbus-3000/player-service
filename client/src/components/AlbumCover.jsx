@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import ReactModal from 'react-modal';
 
 class AlbumCover extends React.Component {
   constructor(props) {
@@ -23,12 +24,23 @@ class AlbumCover extends React.Component {
 
   render() {
     return (
-      <div
-        id="art"
-        className="TP-artContainer"
-        onClick={this.openModal}
-      >
-        <img className="TP-albumArt" src={this.props.albumArt} alt="" />
+      <div>
+        <div
+          id="art"
+          className="TP-artContainer"
+          onClick={this.openModal}
+        >
+          <img className="TP-albumArt" src={this.props.albumArt} alt="" />
+        </div>
+        <ReactModal
+          className="TP-modal"
+          isOpen={this.state.showModal}
+        >
+          <div onClick={this.closeModal} className="TP-modalContent">
+            <p className="TP-modalText">{this.props.songTitle}</p>
+            <img className="TP-modalImg" src={this.props.albumArt} alt=""/>
+          </div>
+        </ReactModal>
       </div>
     );
   }
