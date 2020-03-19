@@ -47,12 +47,12 @@ h1 {
   line-height: 20px;
   white-space: nowrap;
   font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-  font-weight: 100;
-  color: #ccc;
+  font-weight: 200;
+  color: #fff;
   text-align: center;
   vertical-align: baseline;
   padding: 5px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 .TP-playSongInfo {
@@ -159,18 +159,19 @@ h1 {
 
 .TP-modalText {
   font-size: 22px;
-    line-height: 1;
-    padding-bottom: 9px;
-    border-bottom: 1px solid #f2f2f2;
-    margin-bottom: 24px;
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-weight: 400;
-    margin: 18px 0 0;
+  line-height: 1;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #a0a0a0;
+  margin-bottom: 24px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 400;
+  margin: 18px 0 0;
 }
 
 .TP-modalImg {
   height: 500px;
   width: 500px;
+  margin-top: 10px;
 }
 
 .TP-songInfo {

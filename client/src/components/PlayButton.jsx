@@ -7,6 +7,7 @@ class PlayButton extends React.Component {
     super(props);
     this.state = {
       paused: true,
+      playState: 'PLAY',
       artistClass: 'TP-artistNameDefault',
     };
     this.audio = new Audio(props.mediaFile);
@@ -19,13 +20,13 @@ class PlayButton extends React.Component {
 
   playSong(song) {
     song.play();
-    this.setState({ paused: song.paused });
+    this.setState({ paused: song.paused, playState: 'PAUSE' });
     // console.log(song.paused);
   }
 
   pauseSong(song) {
     song.pause();
-    this.setState({ paused: song.paused });
+    this.setState({ paused: song.paused, playState: 'PLAY' });
     // console.log(song.paused);
   }
 
@@ -63,7 +64,7 @@ class PlayButton extends React.Component {
               className="TP-playButton"
               onClick={this.playButtonClick}
             >
-              {}
+              {this.state.playState}
             </button>
           </div>
           <div className="TP-playSongInfo">
