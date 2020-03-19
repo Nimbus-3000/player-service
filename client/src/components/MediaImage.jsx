@@ -1,9 +1,20 @@
 import React from 'react';
 
-const MediaImage = (props) => {
-  return (
-    <div>MEDIA IMAGE</div>
-  );
+class MediaImage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      waveClass: 'TP-waveDefault',
+    };
+  }
+
+  render() {
+    return (
+      <div className="TP-mediaImage">
+        <div className={this.state.waveClass}>WAVEFORM</div>
+      </div>
+    );
+  }
 };
 
 export default MediaImage;

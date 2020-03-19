@@ -13,7 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       song: [],
-      isPlaying: 'PLAY',
+      // isPlaying: 'PLAY',
     };
     this.getSongData = this.getSongData.bind(this);
     // this.playSong = this.playSong.bind(this);

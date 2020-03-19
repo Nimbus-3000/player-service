@@ -218,3 +218,14 @@ h1 {
   float: right;
   margin-right: 3px;
 }
+
+.TP-mediaImage {
+  left: 20px;
+  right: 380px;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 30px;
+  height: 100px;
+  z-index: 1;
+  display: block;
+}
