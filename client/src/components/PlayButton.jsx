@@ -7,11 +7,14 @@ class PlayButton extends React.Component {
     super(props);
     this.state = {
       paused: true,
+      artistClass: 'TP-artistNameDefault',
     };
     this.audio = new Audio(props.mediaFile);
     this.playSong = this.playSong.bind(this);
     this.pauseSong = this.pauseSong.bind(this);
     this.playButtonClick = this.playButtonClick.bind(this);
+    this.nameMouseover = this.nameMouseover.bind(this);
+    this.nameMouseleave = this.nameMouseleave.bind(this);
   }
 
   playSong(song) {
@@ -34,6 +37,15 @@ class PlayButton extends React.Component {
     }
   }
 
+  nameMouseover() {
+    this.setState({ artistClass: 'TP-artistNameHover' });
+  }
+
+  nameMouseleave() {
+    this.setState({ artistClass: 'TP-artistNameDefault' });
+  }
+
+
   render() {
     return (
       <div>
@@ -54,8 +66,12 @@ class PlayButton extends React.Component {
             </button>
           </div>
           <div className="TP-playSongInfo">
-            <div className="TP-nameContainer">
-              <div className="TP-artistName">{this.props.artistName}</div>
+            <div
+              className="TP-nameContainer"
+              onMouseEnter={this.nameMouseover}
+              onMouseLeave={this.nameMouseleave}
+            >
+              <div className={this.state.artistClass}>{this.props.artistName}</div>
             </div>
             <div className="TP-songTitle">{this.props.songTitle}</div>
           </div>

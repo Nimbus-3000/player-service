@@ -27,4 +27,18 @@ describe('Unit Tests', () => {
     playButton.simulate('click');
     expect(wrapper.state().paused).toBe(true);
   });
+
+  test('should change class state on mouse enter', () => {
+    const wrapper = shallow(<PlayButton />);
+    const name = wrapper.find('.TP-nameContainer');
+    name.simulate('mouseenter');
+    expect(wrapper.state().artistClass).toBe('TP-artistNameHover');
+  });
+
+  test('should change class state on mouse leave', () => {
+    const wrapper = shallow(<PlayButton />);
+    const name = wrapper.find('.TP-nameContainer');
+    name.simulate('mouseleave');
+    expect(wrapper.state().artistClass).toBe('TP-artistNameDefault');
+  });
 });

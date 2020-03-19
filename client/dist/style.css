@@ -67,7 +67,7 @@ h1 {
   word-break: break-word;
 }
 
-.TP-artistName {
+.TP-artistNameDefault {
   display: inline-flex;
   height: auto;
   width: auto;
@@ -82,7 +82,26 @@ h1 {
   padding: 2px 7px 3px;
   box-decoration-break: clone;
   transition: opacity .5s linear;
-  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;}
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.TP-artistNameHover {
+  display: inline-flex;
+  height: auto;
+  width: auto;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 100;
+  position: center;
+  background-color: rgba(0,0,0,.8);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 2px 7px 3px;
+  box-decoration-break: clone;
+  transition: opacity .5s linear;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
 
 .TP-songTitle {
   /* display: block;
