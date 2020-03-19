@@ -63,8 +63,11 @@ class App extends React.Component {
             albumArt={songData.albumCover}
             songTitle={songData.songTitle}
           />
+          <SongInfo
+            date={songData.postDate}
+            tag={songData.tag}
+          />
           <MediaImage />
-          <SongInfo />
         </div>
       );
     }
