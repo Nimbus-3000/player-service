@@ -53,6 +53,7 @@ class PlayButton extends React.Component {
           mediaFile={this.props.mediaFile}
           currentTime={this.audio.currentTime}
           duration={this.audio.duration}
+          comments={this.props.comments}
         />
         <div className="TP-playComponent">
           <div className="TP-buttonContainer">

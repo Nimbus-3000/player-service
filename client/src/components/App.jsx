@@ -55,7 +55,7 @@ class App extends React.Component {
             songTitle={songData.songTitle}
             artistName={songData.artistName}
             mediaFile={songData.mediaFile}
-            // playSong={this.playSong}
+            comments={songData.comments}
             // // pauseSong={this.pauseSong}
             // isPlaying={this.state.isPlaying}
           />

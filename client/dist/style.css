@@ -248,3 +248,23 @@ h1 {
   z-index: 1;
   display: block;
 }
+
+.TP-commentBlock {
+  left: 20px;
+  right: 380px;
+  bottom: 0;
+  position: absolute;
+  height: 50px;
+  z-index: 2;
+  display: block;
+}
+
+.TP-comment {
+  display: inline;
+  margin:6px;
+}
+
+.TP-avatar {
+  height: 20px;
+  width: 20px;
+}
