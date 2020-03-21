@@ -11,6 +11,7 @@ class PlayButton extends React.Component {
       playState: 'PLAY',
       artistClass: 'TP-artistNameDefault',
       waveformData: undefined,
+      canvasColor: '#a0a0a0',
     };
     this.audio = new Audio(props.mediaFile);
     this.playSong = this.playSong.bind(this);
@@ -19,7 +20,6 @@ class PlayButton extends React.Component {
     this.nameMouseover = this.nameMouseover.bind(this);
     this.nameMouseleave = this.nameMouseleave.bind(this);
     this.getWaveFormData = this.getWaveFormData.bind(this);
-
   }
 
   componentDidMount() {
@@ -35,7 +35,7 @@ class PlayButton extends React.Component {
         const options = {
           audio_context: audioContext,
           array_buffer: buffer,
-          scale: 128,
+          scale: 5000,
         };
         return new Promise((resolve, reject) => {
           WaveformData.createFromAudio(options, (err, waveform) => {
@@ -50,9 +50,35 @@ class PlayButton extends React.Component {
       })
       .then(waveform => {
         this.setState({ waveformData: waveform });
-        console.log(waveform)
-        console.log(`Waveform has ${waveform.channels} channels`);
-        console.log(`Waveform has length ${waveform.length} points`);
+        const scaleY = (amplitude, height) => {
+          const range = 256;
+          const offset = 128;
+          return height - ((amplitude + offset) * height) / range;
+        };
+
+        const channel = waveform.channel(0);
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        ctx.beginPath();
+
+        for (let x = 0; x < waveform.length; x++) {
+          const val = channel.max_sample(x);
+          // ctx.lineTo(x + 0.5, scaleY(val, canvas.height) + 0.5);
+          ctx.fillStyle = this.state.canvasColor;
+          ctx.fillRect(x + 2, scaleY(val, canvas.height), 5, val);
+        }
+
+        for (let x = waveform.length - 1; x >= 0; x--) {
+          const val = channel.min_sample(x);
+          // ctx.lineTo(x + 0.5, scaleY(val, canvas.height) + 0.5);
+          ctx.fillStyle = this.state.canvasColor;
+          ctx.fillRect(x + 2, scaleY(val, canvas.height), 5, val);
+        }
+
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
       });
   }
 
@@ -84,8 +110,6 @@ class PlayButton extends React.Component {
     this.setState({ artistClass: 'TP-artistNameDefault' });
   }
 
-
-
   render() {
     return (
       <div>
@@ -94,7 +118,9 @@ class PlayButton extends React.Component {
           currentTime={this.audio.currentTime}
           duration={this.audio.duration}
           comments={this.props.comments}
+          waveformData={this.state.waveformData}
         />
+
         <div className="TP-playComponent">
           <div className="TP-buttonContainer">
             <button
