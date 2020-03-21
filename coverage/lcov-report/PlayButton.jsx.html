@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.95% </span>
+                <span class="strong">68.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/19</span>
+                <span class='fraction'>13/19</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">71.43% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.95% </span>
+                <span class="strong">68.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/19</span>
+                <span class='fraction'>13/19</span>
             </div>
         
             
@@ -141,7 +141,9 @@
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,6 +154,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -161,8 +164,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,7 +193,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -234,6 +238,7 @@ class PlayButton extends React.Component {
     super(props);
     this.state = {
       paused: true,
+      playState: 'PLAY',
       artistClass: 'TP-artistNameDefault',
     };
     this.audio = new Audio(props.mediaFile);
@@ -244,15 +249,15 @@ class PlayButton extends React.Component {
     this.nameMouseleave = this.nameMouseleave.bind(this);
   }
 &nbsp;
-  playSong(song) {
-    song.play();
-    this.setState({ paused: song.paused });
+<span class="fstat-no" title="function not covered" >  pl</span>aySong(song) {
+<span class="cstat-no" title="statement not covered" >    song.play();</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({ paused: song.paused, playState: 'PAUSE' });</span>
     // console.log(song.paused);
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  pa</span>useSong(song) {
 <span class="cstat-no" title="statement not covered" >    song.pause();</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({ paused: song.paused });</span>
+<span class="cstat-no" title="statement not covered" >    this.setState({ paused: song.paused, playState: 'PLAY' });</span>
     // console.log(song.paused);
   }
 &nbsp;
@@ -280,6 +285,7 @@ class PlayButton extends React.Component {
           mediaFile={this.props.mediaFile}
           currentTime={this.audio.currentTime}
           duration={this.audio.duration}
+          comments={this.props.comments}
         /&gt;
         &lt;div className="TP-playComponent"&gt;
           &lt;div className="TP-buttonContainer"&gt;
@@ -289,7 +295,7 @@ class PlayButton extends React.Component {
               className="TP-playButton"
               onClick={this.playButtonClick}
             &gt;
-              {}
+              {this.state.playState}
             &lt;/button&gt;
           &lt;/div&gt;
           &lt;div className="TP-playSongInfo"&gt;
@@ -316,7 +322,7 @@ export default PlayButton;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Mar 19 2020 11:04:28 GMT-0700 (PDT)
+                at Fri Mar 20 2020 11:49:20 GMT-0700 (PDT)
             </div>
         </div>
         <script src="prettify.js"></script>

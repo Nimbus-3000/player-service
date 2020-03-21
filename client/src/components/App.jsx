@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable import/extensions */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
@@ -13,7 +14,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       song: [],
-      // isPlaying: 'PLAY',
+      waveformData: undefined,
     };
     this.getSongData = this.getSongData.bind(this);
     // this.playSong = this.playSong.bind(this);
@@ -36,6 +37,7 @@ class App extends React.Component {
       });
   }
 
+
   // playSong(audio) {
   //   audio.play();
   // }
@@ -46,6 +48,7 @@ class App extends React.Component {
 
   render() {
     const songData = this.state.song[0];
+    console.log(this.state)
 
     if (songData) {
       return (

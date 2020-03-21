@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import WaveformData from 'waveform-data';
 import MediaImage from './MediaImage.jsx';
 
 class PlayButton extends React.Component {
@@ -9,6 +10,7 @@ class PlayButton extends React.Component {
       paused: true,
       playState: 'PLAY',
       artistClass: 'TP-artistNameDefault',
+      waveformData: undefined,
     };
     this.audio = new Audio(props.mediaFile);
     this.playSong = this.playSong.bind(this);
@@ -16,6 +18,42 @@ class PlayButton extends React.Component {
     this.playButtonClick = this.playButtonClick.bind(this);
     this.nameMouseover = this.nameMouseover.bind(this);
     this.nameMouseleave = this.nameMouseleave.bind(this);
+    this.getWaveFormData = this.getWaveFormData.bind(this);
+
+  }
+
+  componentDidMount() {
+    this.getWaveFormData(this.props.mediaFile);
+  }
+
+  getWaveFormData(fileUrl) {
+    const audioContext = new AudioContext();
+
+    fetch(fileUrl)
+      .then(response => response.arrayBuffer())
+      .then(buffer => {
+        const options = {
+          audio_context: audioContext,
+          array_buffer: buffer,
+          scale: 128,
+        };
+        return new Promise((resolve, reject) => {
+          WaveformData.createFromAudio(options, (err, waveform) => {
+            if (err) {
+              reject(err);
+            }
+            else {
+              resolve(waveform);
+            }
+          });
+        });
+      })
+      .then(waveform => {
+        this.setState({ waveformData: waveform });
+        console.log(waveform)
+        console.log(`Waveform has ${waveform.channels} channels`);
+        console.log(`Waveform has length ${waveform.length} points`);
+      });
   }
 
   playSong(song) {
@@ -45,6 +83,7 @@ class PlayButton extends React.Component {
   nameMouseleave() {
     this.setState({ artistClass: 'TP-artistNameDefault' });
   }
+
 
 
   render() {

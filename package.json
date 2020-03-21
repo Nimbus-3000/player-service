@@ -50,6 +50,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-modal": "^3.11.2",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "waveform-data": "^3.3.1"
   }
 }

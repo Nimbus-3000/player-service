@@ -16,7 +16,7 @@ describe('Unit Tests', () => {
 
   test('should play when playButton is clicked and song is paused', () => {
     const wrapper = (<PlayButton />);
-    const playButton = wrapper.find('#TP-playButton');
+    const playButton = wrapper.instance().find('#TP-playButton');
     playButton.simulate('click');
     expect(wrapper.state().paused).toBe(false);
   });
