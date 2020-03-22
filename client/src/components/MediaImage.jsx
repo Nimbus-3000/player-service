@@ -24,8 +24,8 @@ class MediaImage extends React.Component {
     return (
       <div className="TP-mediaImage">
           <canvas id="canvas" width="1000" height="200"></canvas>
-        <div className={this.state.waveClass}>{`CURRENT TIME: ${this.props.currentTime}`}</div>
-        <div className={this.state.waveClass}>{`DURATION ${this.props.duration}`}</div>
+        <div className="TP-currentTime">{`${this.props.currentTime}`}</div>
+        <div className="TP-duration">{`${this.props.duration}`}</div>
         <div className="TP-commentBlock">
           {comments}
         </div>

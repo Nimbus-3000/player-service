@@ -256,19 +256,47 @@ h1 {
   display: block;
 }
 
+.TP-currentTime {
+  position: absolute;
+  left: 0px;
+  bottom: 50px;
+  height: 15px;
+  width: auto;
+  background-color: black;
+  color: #ccc;
+  text-align: right;
+  font-size: 12px;
+  padding: 1px;
+}
+
+.TP-duration {
+  position: absolute;
+  right: 0px;
+  bottom: 50px;
+  height: 15px;
+  width: auto;
+  background-color: black;
+  color: #ccc;
+  text-align: right;
+  font-size: 12px;
+  padding: 1px;
+}
+
 .TP-commentBlock {
   left: 20px;
-  right: 380px;
+  right: 0px;
   bottom: 0;
   position: absolute;
   height: 50px;
   z-index: 1;
+  bottom: 0px;
   display: flex;
+  width: 100%;
 }
 
 .TP-comment {
   display: inline;
-  margin:6px;
+  margin: 0 auto;
 }
 
 .TP-avatar {

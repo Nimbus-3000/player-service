@@ -11,7 +11,8 @@ class PlayButton extends React.Component {
       playState: 'PLAY',
       artistClass: 'TP-artistNameDefault',
       waveformData: undefined,
-      canvasColor: '#a0a0a0',
+      canvasTopColor: '#ccc',
+      canvasBotColor: '#a0a0a0',
     };
     this.audio = new Audio(props.mediaFile);
     this.playSong = this.playSong.bind(this);
@@ -66,19 +67,20 @@ class PlayButton extends React.Component {
 
         for (let x = 0; x < waveform.length; x++) {
           const val = channel.max_sample(x) * 6;
-          ctx.fillStyle = this.state.canvasColor;
-          ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
-          // ctx.strokeRect(x, scaleY(val, canvas.height), 5, val);
-        }
-
-        for (let x = waveform.length - 1; x >= 0; x--) {
-          const val = channel.min_sample(x) * 3;
-          // ctx.lineTo(x + 0.5, scaleY(val, canvas.height) + 0.5);
+          ctx.fillStyle = this.state.canvasTopColor;
           ctx.fillStyle = this.state.canvasColor;
           ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
           ctx.lineTo(x, scaleY(0, canvas.height), 2);
           // ctx.strokeRect(x, scaleY(val, canvas.height), 5, val);
         }
+
+        // for (let x = waveform.length - 1; x >= 0; x--) {
+        //   const val = channel.min_sample(x) * 3;
+        //   // ctx.lineTo(x + 0.5, scaleY(val, canvas.height) + 0.5);
+        //   ctx.fillStyle = this.state.canvasBotColor;
+        //   ctx.fillRect(x, scaleY(val, 0), 2, val);
+        //   // ctx.strokeRect(x, scaleY(val, canvas.height), 5, val);
+        // }
 
         ctx.closePath();
         ctx.stroke();
