@@ -146,8 +146,8 @@ h1 {
   width: 550px;
   left: 240.5px;
   height: auto;
-  margin: 76px 0 30px;
-  position: absolute;
+  margin: 76px auto;
+  /* position: absolute; */
   top: 0;
   padding: 25px;
   background: #fff;
@@ -297,9 +297,11 @@ h1 {
   
 }
 
-.canvas {
-  position: absolute;
-  height: 100px;
+#canvas {
+  display: inline-flex;
+  position: relative;
+  max-height: 100px;
+  width: 100%;
   color: #fff;
   top: 0;
   left: 0;

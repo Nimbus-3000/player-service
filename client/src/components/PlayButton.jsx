@@ -35,7 +35,7 @@ class PlayButton extends React.Component {
         const options = {
           audio_context: audioContext,
           array_buffer: buffer,
-          scale: 5000,
+          scale: 512,
         };
         return new Promise((resolve, reject) => {
           WaveformData.createFromAudio(options, (err, waveform) => {
@@ -49,7 +49,7 @@ class PlayButton extends React.Component {
         });
       })
       .then(waveform => {
-        this.setState({ waveformData: waveform });
+        // this.setState({ waveformData: waveform });
         const scaleY = (amplitude, height) => {
           const range = 256;
           const offset = 128;
@@ -57,23 +57,27 @@ class PlayButton extends React.Component {
         };
 
         const channel = waveform.channel(0);
+        // console.log('CAHNNEL', channel)
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
         ctx.beginPath();
+        // ctx.globalCompositeOperation = 'xor';
 
         for (let x = 0; x < waveform.length; x++) {
-          const val = channel.max_sample(x);
-          // ctx.lineTo(x + 0.5, scaleY(val, canvas.height) + 0.5);
+          const val = channel.max_sample(x) * 6;
           ctx.fillStyle = this.state.canvasColor;
-          ctx.fillRect(x + 2, scaleY(val, canvas.height), 5, val);
+          ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
+          // ctx.strokeRect(x, scaleY(val, canvas.height), 5, val);
         }
 
         for (let x = waveform.length - 1; x >= 0; x--) {
-          const val = channel.min_sample(x);
+          const val = channel.min_sample(x) * 3;
           // ctx.lineTo(x + 0.5, scaleY(val, canvas.height) + 0.5);
           ctx.fillStyle = this.state.canvasColor;
-          ctx.fillRect(x + 2, scaleY(val, canvas.height), 5, val);
+          ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
+          ctx.lineTo(x, scaleY(0, canvas.height), 2);
+          // ctx.strokeRect(x, scaleY(val, canvas.height), 5, val);
         }
 
         ctx.closePath();
