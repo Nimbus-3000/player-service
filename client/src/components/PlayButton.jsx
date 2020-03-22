@@ -12,7 +12,7 @@ class PlayButton extends React.Component {
     super(props);
     this.state = {
       paused: true,
-      playState: 'PLAY',
+      playState: 'play',
       currentTime: '0:00',
       artistClass: 'TP-artistNameDefault',
       waveformData: undefined,
@@ -90,13 +90,13 @@ class PlayButton extends React.Component {
 
   playSong(song) {
     song.play();
-    this.setState({ paused: song.paused, playState: 'PAUSE' });
+    this.setState({ paused: song.paused, playState: 'pause' });
     // console.log(song.paused);
   }
 
   pauseSong(song) {
     song.pause();
-    this.setState({ paused: song.paused, playState: 'PLAY' });
+    this.setState({ paused: song.paused, playState: 'play' });
     // console.log(song.paused);
   }
 
@@ -135,7 +135,7 @@ class PlayButton extends React.Component {
               className="TP-playButton"
               onClick={this.playButtonClick}
             >
-              {this.state.playState}
+              <img className="TP-playIcon" src={`https://audiblymedia.s3-us-west-1.amazonaws.com/playbutton/${this.state.playState}.png`} alt={this.state.playState} />
             </button>
           </div>
           <div className="TP-playSongInfo">

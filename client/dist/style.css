@@ -60,6 +60,12 @@ h1 {
   /* box-sizing: border-box; */
 }
 
+.TP-playIcon {
+  height: 75%;
+  width: 50%;
+  margin: 0 auto;
+}
+
 .TP-playSongInfo {
   display: inline-block;
   flex: 1;
