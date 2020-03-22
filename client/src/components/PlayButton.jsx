@@ -1,7 +1,11 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import WaveformData from 'waveform-data';
+import moment from 'moment';
+import momentDurationFormatSetup from 'moment-duration-format';
 import MediaImage from './MediaImage.jsx';
+
+momentDurationFormatSetup(moment);
 
 class PlayButton extends React.Component {
   constructor(props) {
@@ -9,14 +13,17 @@ class PlayButton extends React.Component {
     this.state = {
       paused: true,
       playState: 'PLAY',
-      currentTime: 0,
+      currentTime: '0:00',
       artistClass: 'TP-artistNameDefault',
       waveformData: undefined,
       canvasTopColor: '#ccc',
       canvasBotColor: '#a0a0a0',
     };
     this.audio = new Audio(props.mediaFile);
-    this.audio.ontimeupdate = () => {this.setState({ currentTime: this.audio.currentTime })}
+    this.audio.ontimeupdate = () => {
+      const formatTime = moment.duration(this.audio.currentTime, 'seconds').format();
+      this.setState({ currentTime: formatTime });
+    };
     this.playSong = this.playSong.bind(this);
     this.pauseSong = this.pauseSong.bind(this);
     this.playButtonClick = this.playButtonClick.bind(this);
@@ -73,16 +80,7 @@ class PlayButton extends React.Component {
           ctx.fillStyle = this.state.canvasColor;
           ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
           ctx.lineTo(x, scaleY(0, canvas.height), 2);
-          // ctx.strokeRect(x, scaleY(val, canvas.height), 5, val);
         }
-
-        // for (let x = waveform.length - 1; x >= 0; x--) {
-        //   const val = channel.min_sample(x) * 3;
-        //   // ctx.lineTo(x + 0.5, scaleY(val, canvas.height) + 0.5);
-        //   ctx.fillStyle = this.state.canvasBotColor;
-        //   ctx.fillRect(x, scaleY(val, 0), 2, val);
-        //   // ctx.strokeRect(x, scaleY(val, canvas.height), 5, val);
-        // }
 
         ctx.closePath();
         ctx.stroke();
@@ -124,7 +122,7 @@ class PlayButton extends React.Component {
         <MediaImage
           mediaFile={this.props.mediaFile}
           currentTime={this.state.currentTime}
-          duration={this.audio.duration}
+          duration={moment.duration(this.audio.duration, 'seconds').format()}
           comments={this.props.comments}
           waveformData={this.state.waveformData}
         />
