@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip'
+
 import WaveformData from 'waveform-data';
 
 
@@ -6,16 +8,18 @@ class MediaImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      waveClass: 'TP-waveDefault',
+      isVisible: false,
     };
-    // this.drawWaveform = this.drawWaveform.bind(this);
   }
 
   render() {
-
     const comments = this.props.comments.map((comment, i) => {
       return (
         <div className="TP-comment" key={i}>
+          <div className="TP-commentText" >
+            <div>{comment.username}</div>
+            <div>{comment.comment}</div>
+          </div>
           <img className="TP-avatar" src={comment.avatar} alt="" />
         </div>
       );
