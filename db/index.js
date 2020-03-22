@@ -1,3 +1,5 @@
+// database
+
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/top_player_db', { useNewUrlParser: true });
@@ -30,4 +32,16 @@ const getAllSongs = (callback) => {
     });
 };
 
+const getOneSong = (callback) => {
+  Song.find({})
+    .limit(1)
+    .then((data) => {
+      callback(null, data);
+    })
+    .catch(() => {
+      callback(true);
+    });
+};
+
 module.exports.getAllSongs = getAllSongs;
+module.exports.getOneSong = getOneSong;

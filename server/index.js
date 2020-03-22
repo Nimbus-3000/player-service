@@ -1,3 +1,5 @@
+// server
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -16,7 +18,7 @@ app.listen(port, () => {
 });
 
 app.get('/songData', (req, res) => {
-  database.getAllSongs((err, data) => {
+  database.getOneSong((err, data) => {
     if (err) {
       res.sendStatus(404);
     }
