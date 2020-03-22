@@ -9,12 +9,14 @@ class PlayButton extends React.Component {
     this.state = {
       paused: true,
       playState: 'PLAY',
+      currentTime: 0,
       artistClass: 'TP-artistNameDefault',
       waveformData: undefined,
       canvasTopColor: '#ccc',
       canvasBotColor: '#a0a0a0',
     };
     this.audio = new Audio(props.mediaFile);
+    this.audio.ontimeupdate = () => {this.setState({ currentTime: this.audio.currentTime })}
     this.playSong = this.playSong.bind(this);
     this.pauseSong = this.pauseSong.bind(this);
     this.playButtonClick = this.playButtonClick.bind(this);
@@ -121,7 +123,7 @@ class PlayButton extends React.Component {
       <div>
         <MediaImage
           mediaFile={this.props.mediaFile}
-          currentTime={this.audio.currentTime}
+          currentTime={this.state.currentTime}
           duration={this.audio.duration}
           comments={this.props.comments}
           waveformData={this.state.waveformData}

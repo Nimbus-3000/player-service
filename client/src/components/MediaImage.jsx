@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactTooltip from 'react-tooltip'
-
 import WaveformData from 'waveform-data';
 
 
@@ -16,10 +14,10 @@ class MediaImage extends React.Component {
     const comments = this.props.comments.map((comment, i) => {
       return (
         <div className="TP-comment" key={i}>
-          <div className="TP-commentText" >
+          {/* <div className="TP-commentText" >
             <div>{comment.username}</div>
             <div>{comment.comment}</div>
-          </div>
+          </div> */}
           <img className="TP-avatar" src={comment.avatar} alt="" />
         </div>
       );
