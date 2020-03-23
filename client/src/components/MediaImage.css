@@ -1,0 +1,80 @@
+.TP-mediaImage {
+  left: 20px;
+  right: 380px;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 30px;
+  height: 100px;
+  z-index: 0;
+  display: block;
+}
+
+.TP-currentTime {
+  position: absolute;
+  left: 0px;
+  bottom: 50px;
+  height: 15px;
+  width: auto;
+  background-color: black;
+  color: #ccc;
+  text-align: right;
+  font-size: 12px;
+  padding: 1px;
+}
+
+.TP-duration {
+  position: absolute;
+  right: 0px;
+  bottom: 50px;
+  height: 15px;
+  width: auto;
+  background-color: black;
+  color: #ccc;
+  text-align: right;
+  font-size: 12px;
+  padding: 1px;
+}
+
+.TP-commentBlock {
+  left: 20px;
+  right: 0px;
+  bottom: 0;
+  position: absolute;
+  height: 50px;
+  z-index: 1;
+  bottom: 0px;
+  display: flex;
+  width: 100%;
+}
+
+.TP-comment {
+  display: inline;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.TP-avatar {
+  height: 20px;
+  width: 20px;
+  z-index: 0;
+}
+
+.TP-waveform {
+  z-index: 0;
+  margin-bottom: 30px;
+  height: 100px;
+  color: #fff;
+  position: absolute
+  
+}
+
+.TP-canvas {
+  display: inline-flex;
+  position: relative;
+  max-height: 100px;
+  width: 100%;
+  color: #fff;
+  top: 0;
+  left: 0;
+  margin-bottom: 30px;
+}

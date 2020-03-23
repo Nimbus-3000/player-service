@@ -1,0 +1,20 @@
+h1 {
+  height: 46px;
+  width: 1240px;
+  padding: 0px 30px;
+  position: relative;
+  margin: 0 auto;
+  background: #333;
+  color: #ccc;
+  display: block; 
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+.TP-topPlayer {
+  height: 330px;
+  background: linear-gradient(135deg, rgb(110, 103, 53) 0%, rgb(39, 39, 37) 100%);
+  padding: 30px;
+  max-width: 1240px;
+  position: relative;
+  margin: 0 auto;
+}

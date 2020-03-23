@@ -1,0 +1,65 @@
+.TP-songInfo {
+  position: absolute;
+  top: 29px;
+  right: 390px;
+  width: 150px;
+  display: block;
+  font: 12px/1.4 Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  color: #333;
+}
+
+.TP-date {
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  display: block;
+  text-align: right;
+}
+
+.TP-tagDefault {
+  position: relative;
+  /* display: inline-block; */
+  height: 20px;
+  padding: 0 7px;
+  background: #999;
+  border: 1px solid #999;
+  border-left-width: 0;
+  color: #fff;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 20px;
+  text-align: right;
+  content: "#";
+  display: block;
+  float: right;
+  margin-right: 3px;
+}
+
+.TP-tagHover {
+  position: relative;
+  /* display: inline-block; */
+  height: 20px;
+  padding: 0 7px;
+  background: #333;
+  border: 1px solid #333;
+  border-left-width: 0;
+  color: #fff;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 20px;
+  text-align: right;
+  content: "#";
+  display: block;
+  float: right;
+  margin-right: 3px;
+}

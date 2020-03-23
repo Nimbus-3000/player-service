@@ -2,6 +2,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import ReactModal from 'react-modal';
+import CSSModules from 'react-css-modules';
+import styles from './AlbumCover.css';
 
 class AlbumCover extends React.Component {
   constructor(props) {

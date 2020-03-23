@@ -1,6 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
+import CSSModules from 'react-css-modules';
+import styles from './SongInfo.css';
 
 momentDurationFormatSetup(moment);
 

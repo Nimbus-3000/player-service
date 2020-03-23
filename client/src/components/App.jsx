@@ -8,6 +8,9 @@ import PlayButton from './PlayButton.jsx';
 import AlbumCover from './AlbumCover.jsx';
 import SongInfo from './SongInfo.jsx';
 
+import CSSModules from 'react-css-modules';
+import styles from './App.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,23 +41,26 @@ class App extends React.Component {
 
     if (songData) {
       return (
-        <div className="TP-topPlayer">
-          <PlayButton
-            className="TP-playComponent"
-            songTitle={songData.songTitle}
-            artistName={songData.artistName}
-            mediaFile={songData.mediaFile}
-            comments={songData.comments}
-          />
-          <AlbumCover
-            albumArt={songData.albumCover}
-            songTitle={songData.songTitle}
-          />
-          <SongInfo
-            date={songData.postDate}
-            tag={songData.tag}
-          />
+        <div>
+          <h1>audib.ly</h1>
+          <div className="TP-topPlayer">
+            <PlayButton
+              className="TP-playComponent"
+              songTitle={songData.songTitle}
+              artistName={songData.artistName}
+              mediaFile={songData.mediaFile}
+              comments={songData.comments}
+            />
+            <AlbumCover
+              albumArt={songData.albumCover}
+              songTitle={songData.songTitle}
+            />
+            <SongInfo
+              date={songData.postDate}
+              tag={songData.tag}
+            />
 
+          </div>
         </div>
       );
     }

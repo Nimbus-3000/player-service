@@ -1,4 +1,4 @@
-h1 {
+/* h1 {
   height: 46px;
   width: 1240px;
   padding: 0px 30px;
@@ -17,9 +17,9 @@ h1 {
   max-width: 1240px;
   position: relative;
   margin: 0 auto;
-}
+} */
 
-.TP-playComponent {
+/* .TP-playComponent {
   display: inline-flex;
   height: 63px;
   width: 490px;
@@ -113,9 +113,6 @@ h1 {
 }
 
 .TP-songTitle {
-  /* display: block;
-  color: aliceblue;
-  background-color: black; */
   display: inline-flex;
   box-sizing: border-box;
   color: #fff;
@@ -129,13 +126,12 @@ h1 {
   word-break: break-word;
   box-decoration-break: clone;
 
-}
+} */
 
-.TP-artContainer {
+/* .TP-artContainer {
   position: absolute;
   top: 25px;
   right: 25px;
-  /* z-index: 1; */
   width: 340px;
   height: 340px;
   cursor: pointer;
@@ -151,7 +147,6 @@ h1 {
   left: 240.5px;
   height: auto;
   margin: 76px auto;
-  /* position: absolute; */
   top: 0;
   padding: 25px;
   background: #fff;
@@ -181,9 +176,9 @@ h1 {
   height: 500px;
   width: 500px;
   margin-top: 10px;
-}
+} */
 
-.TP-songInfo {
+/* .TP-songInfo {
   position: absolute;
   top: 29px;
   right: 390px;
@@ -247,9 +242,9 @@ h1 {
   display: block;
   float: right;
   margin-right: 3px;
-}
+} */
 
-.TP-mediaImage {
+/* .TP-mediaImage {
   left: 20px;
   right: 380px;
   bottom: 0;
@@ -319,7 +314,7 @@ h1 {
   
 }
 
-.canvas {
+.TP-canvas {
   display: inline-flex;
   position: relative;
   max-height: 100px;
@@ -328,5 +323,4 @@ h1 {
   top: 0;
   left: 0;
   margin-bottom: 30px;
-
-}
+} */
