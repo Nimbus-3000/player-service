@@ -33,7 +33,9 @@ const getAllSongs = (callback) => {
 };
 
 const getOneSong = (callback) => {
-  Song.find({})
+  const random = Math.floor(Math.random() * 100);
+  Song.find()
+    .skip(random)
     .limit(1)
     .then((data) => {
       callback(null, data);

@@ -12,8 +12,9 @@ class PlayButton extends React.Component {
     super(props);
     this.state = {
       paused: true,
-      playState: 'PLAY',
+      playState: 'play',
       currentTime: '0:00',
+      seconds: 0,
       artistClass: 'TP-artistNameDefault',
       waveformData: undefined,
       canvasTopColor: '#ccc',
@@ -23,10 +24,12 @@ class PlayButton extends React.Component {
     this.audio.ontimeupdate = () => {
       const formatTime = moment.duration(this.audio.currentTime, 'seconds').format();
       this.setState({ currentTime: formatTime });
+      this.setState({ seconds: this.audio.currentTime});
     };
     this.playSong = this.playSong.bind(this);
     this.pauseSong = this.pauseSong.bind(this);
     this.playButtonClick = this.playButtonClick.bind(this);
+    // this.changeTime = this.changeTime.bind(this);
     this.nameMouseover = this.nameMouseover.bind(this);
     this.nameMouseleave = this.nameMouseleave.bind(this);
     this.getWaveFormData = this.getWaveFormData.bind(this);
@@ -34,6 +37,7 @@ class PlayButton extends React.Component {
 
   componentDidMount() {
     this.getWaveFormData(this.props.mediaFile);
+    this.setState()
   }
 
   getWaveFormData(fileUrl) {
@@ -75,10 +79,11 @@ class PlayButton extends React.Component {
         // ctx.globalCompositeOperation = 'xor';
 
         for (let x = 0; x < waveform.length; x++) {
-          const val = channel.max_sample(x) * 6;
+          const val = channel.max_sample(x) * 2;
           ctx.fillStyle = this.state.canvasTopColor;
           ctx.fillStyle = this.state.canvasColor;
           ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
+          ctx.lineStyle = 'transparent';
           ctx.lineTo(x, scaleY(0, canvas.height), 2);
         }
 
@@ -90,13 +95,13 @@ class PlayButton extends React.Component {
 
   playSong(song) {
     song.play();
-    this.setState({ paused: song.paused, playState: 'PAUSE' });
+    this.setState({ paused: song.paused, playState: 'pause' });
     // console.log(song.paused);
   }
 
   pauseSong(song) {
     song.pause();
-    this.setState({ paused: song.paused, playState: 'PLAY' });
+    this.setState({ paused: song.paused, playState: 'play' });
     // console.log(song.paused);
   }
 
@@ -107,6 +112,11 @@ class PlayButton extends React.Component {
       this.pauseSong(this.audio);
     }
   }
+
+  // changeTime(id) {
+  //   const timeLine = document.getElementById(id);
+  //   timeLine.value = this.audio.currentTime;
+  // }
 
   nameMouseover() {
     this.setState({ artistClass: 'TP-artistNameHover' });
@@ -123,10 +133,12 @@ class PlayButton extends React.Component {
           mediaFile={this.props.mediaFile}
           currentTime={this.state.currentTime}
           duration={moment.duration(this.audio.duration, 'seconds').format()}
+          seconds={this.state.seconds}
+          durationSecs={this.audio.duration}
           comments={this.props.comments}
           waveformData={this.state.waveformData}
+          changeTime={this.changeTime}
         />
-
         <div className="TP-playComponent">
           <div className="TP-buttonContainer">
             <button
@@ -135,7 +147,7 @@ class PlayButton extends React.Component {
               className="TP-playButton"
               onClick={this.playButtonClick}
             >
-              {this.state.playState}
+              <img className="TP-playIcon" src={`https://audiblymedia.s3-us-west-1.amazonaws.com/playbutton/${this.state.playState}.png`} alt={this.state.playState} />
             </button>
           </div>
           <div className="TP-playSongInfo">

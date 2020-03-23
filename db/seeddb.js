@@ -31,7 +31,7 @@ const tag = faker.lorem.word;
 const albumCover = faker.image.abstract;
 const comments = () => {
   const commentArr = [];
-  while (commentArr.length < 15) {
+  while (commentArr.length < 10) {
     commentArr.push(
       {
         username: firstname(),
@@ -45,15 +45,17 @@ const comments = () => {
 
 
 const seedData = [];
-while (seedData.length <= 10) {
+while (seedData.length < 100) {
+  let randomImg = Math.floor(Math.random() * 10);
+  let randomSong = Math.floor(Math.random() * 11);
   const song = new Song(
     {
       artistName: firstname(),
       songTitle: songTitle(),
-      mediaFile: 'https://audiblymedia.s3-us-west-1.amazonaws.com/audio/1.mp3',
+      mediaFile: `https://audiblymedia.s3-us-west-1.amazonaws.com/audio/${randomSong}.mp3`,
       postDate: postDate(),
       tag: tag(),
-      albumCover: albumCover(),
+      albumCover: `https://audiblymedia.s3-us-west-1.amazonaws.com/images/${randomImg}.jpeg`,
       comments: comments(),
     },
   );
