@@ -1,4 +1,8 @@
 import React from 'react';
+import moment from 'moment';
+import momentDurationFormatSetup from 'moment-duration-format';
+
+momentDurationFormatSetup(moment);
 
 class SongInfo extends React.Component {
   constructor(props) {
@@ -21,7 +25,7 @@ class SongInfo extends React.Component {
   render() {
     return (
       <div className="TP-songInfo">
-        <div className="TP-date">{this.props.date}</div>
+        <div className="TP-date">{moment(this.props.date).fromNow()}</div>
         <div
           id="TP-tag"
           className={this.state.tagClass}
