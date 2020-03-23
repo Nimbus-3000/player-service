@@ -319,7 +319,7 @@ h1 {
   
 }
 
-#canvas {
+.canvas {
   display: inline-flex;
   position: relative;
   max-height: 100px;

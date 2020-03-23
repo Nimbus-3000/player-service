@@ -25,12 +25,21 @@ class MediaImage extends React.Component {
 
     return (
       <div className="TP-mediaImage">
-          <canvas id="canvas" width="1000" height="200"></canvas>
+        <canvas id="canvas" class="canvas" width="1000" height="200"></canvas>
         <div className="TP-currentTime">{`${this.props.currentTime}`}</div>
         <div className="TP-duration">{`${this.props.duration}`}</div>
         <div className="TP-commentBlock">
           {comments}
         </div>
+        <input
+          id="TP-timeline"
+          className="canvas"
+          type="range"
+          min="0"
+          max={this.props.durationSecs}
+          value={this.props.seconds}
+          // onClick={this.props.changeTime("TP-timeline")}
+        />
       </div>
     );
   }

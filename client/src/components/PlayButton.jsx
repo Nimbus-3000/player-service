@@ -14,6 +14,7 @@ class PlayButton extends React.Component {
       paused: true,
       playState: 'play',
       currentTime: '0:00',
+      seconds: 0,
       artistClass: 'TP-artistNameDefault',
       waveformData: undefined,
       canvasTopColor: '#ccc',
@@ -23,10 +24,12 @@ class PlayButton extends React.Component {
     this.audio.ontimeupdate = () => {
       const formatTime = moment.duration(this.audio.currentTime, 'seconds').format();
       this.setState({ currentTime: formatTime });
+      this.setState({ seconds: this.audio.currentTime});
     };
     this.playSong = this.playSong.bind(this);
     this.pauseSong = this.pauseSong.bind(this);
     this.playButtonClick = this.playButtonClick.bind(this);
+    // this.changeTime = this.changeTime.bind(this);
     this.nameMouseover = this.nameMouseover.bind(this);
     this.nameMouseleave = this.nameMouseleave.bind(this);
     this.getWaveFormData = this.getWaveFormData.bind(this);
@@ -80,6 +83,7 @@ class PlayButton extends React.Component {
           ctx.fillStyle = this.state.canvasTopColor;
           ctx.fillStyle = this.state.canvasColor;
           ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
+          ctx.lineStyle = 'transparent';
           ctx.lineTo(x, scaleY(0, canvas.height), 2);
         }
 
@@ -109,6 +113,11 @@ class PlayButton extends React.Component {
     }
   }
 
+  // changeTime(id) {
+  //   const timeLine = document.getElementById(id);
+  //   timeLine.value = this.audio.currentTime;
+  // }
+
   nameMouseover() {
     this.setState({ artistClass: 'TP-artistNameHover' });
   }
@@ -124,10 +133,12 @@ class PlayButton extends React.Component {
           mediaFile={this.props.mediaFile}
           currentTime={this.state.currentTime}
           duration={moment.duration(this.audio.duration, 'seconds').format()}
+          seconds={this.state.seconds}
+          durationSecs={this.audio.duration}
           comments={this.props.comments}
           waveformData={this.state.waveformData}
+          changeTime={this.changeTime}
         />
-
         <div className="TP-playComponent">
           <div className="TP-buttonContainer">
             <button
