@@ -8,14 +8,20 @@ module.exports = {
         path: __dirname + '/client/dist',
     },
     module: {
-        rules: [
-            {
-            test: /\.jsx?/,
+      rules: [
+        {
+          test: /\.jsx?/,
 
-            use: {
-                loader: "babel-loader",
-            }
+          use: {
+              loader: "babel-loader",
+          }
+        }, 
+        {
+          test: /\.css$/,
+          loaders: [
+            'style-loader', 'css-loader?sourceMap',
+          ],
         }
-    ],
+      ],
     }
 }

@@ -4,6 +4,8 @@ import WaveformData from 'waveform-data';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
 import MediaImage from './MediaImage.jsx';
+import CSSModules from 'react-css-modules';
+import styles from './PlayButton.css';
 
 momentDurationFormatSetup(moment);
 

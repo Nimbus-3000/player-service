@@ -1,0 +1,50 @@
+.TP-artContainer {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 340px;
+  height: 340px;
+  cursor: pointer;
+}
+
+.TP-albumArt {
+  width: 340px;
+  height: 340px;
+}
+
+.TP-modal {
+  width: 550px;
+  left: 240.5px;
+  height: auto;
+  margin: 76px auto;
+  /* position: absolute; */
+  top: 0;
+  padding: 25px;
+  background: #fff;
+  font: 12px/1.4 Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  color: #333;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+.TP-modalContent {
+  position: relative;
+  height: 100%;
+}
+
+.TP-modalText {
+  font-size: 22px;
+  line-height: 1;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #a0a0a0;
+  margin-bottom: 24px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 400;
+  margin: 18px 0 0;
+}
+
+.TP-modalImg {
+  height: 500px;
+  width: 500px;
+  margin-top: 10px;
+}

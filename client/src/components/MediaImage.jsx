@@ -1,5 +1,7 @@
 import React from 'react';
 import WaveformData from 'waveform-data';
+import CSSModules from 'react-css-modules';
+import styles from './MediaImage.css';
 
 
 class MediaImage extends React.Component {
@@ -25,13 +27,13 @@ class MediaImage extends React.Component {
 
     return (
       <div className="TP-mediaImage">
-        <canvas id="canvas" class="canvas" width="1000" height="200"></canvas>
+        <canvas id="canvas" className="TP-canvas" width="1000" height="200"></canvas>
         <div className="TP-currentTime">{`${this.props.currentTime}`}</div>
         <div className="TP-duration">{`${this.props.duration}`}</div>
         <div className="TP-commentBlock">
           {comments}
         </div>
-        <input
+        {/* <input
           id="TP-timeline"
           className="canvas"
           type="range"
@@ -39,7 +41,7 @@ class MediaImage extends React.Component {
           max={this.props.durationSecs}
           value={this.props.seconds}
           // onClick={this.props.changeTime("TP-timeline")}
-        />
+        /> */}
       </div>
     );
   }
