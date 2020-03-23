@@ -6,7 +6,6 @@ import $ from 'jquery';
 
 import PlayButton from './PlayButton.jsx';
 import AlbumCover from './AlbumCover.jsx';
-// import MediaImage from './MediaImage.jsx';
 import SongInfo from './SongInfo.jsx';
 
 class App extends React.Component {
@@ -17,8 +16,6 @@ class App extends React.Component {
       waveformData: undefined,
     };
     this.getSongData = this.getSongData.bind(this);
-    // this.playSong = this.playSong.bind(this);
-    // this.pauseSong = this.pauseSong.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +26,6 @@ class App extends React.Component {
     $.get('/songData')
       .done((data) => {
         this.setState({ song: data });
-        // console.log(this.state.song[0]);
       })
       .fail(() => {
         // eslint-disable-next-line no-console
@@ -37,18 +33,8 @@ class App extends React.Component {
       });
   }
 
-
-  // playSong(audio) {
-  //   audio.play();
-  // }
-
-  // pauseSong(audio) {
-  //   audio.pause();
-  // }
-
   render() {
     const songData = this.state.song[0];
-    console.log(this.state)
 
     if (songData) {
       return (
@@ -59,8 +45,6 @@ class App extends React.Component {
             artistName={songData.artistName}
             mediaFile={songData.mediaFile}
             comments={songData.comments}
-            // // pauseSong={this.pauseSong}
-            // isPlaying={this.state.isPlaying}
           />
           <AlbumCover
             albumArt={songData.albumCover}

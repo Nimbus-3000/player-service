@@ -34,6 +34,7 @@ class PlayButton extends React.Component {
 
   componentDidMount() {
     this.getWaveFormData(this.props.mediaFile);
+    this.setState()
   }
 
   getWaveFormData(fileUrl) {
@@ -75,7 +76,7 @@ class PlayButton extends React.Component {
         // ctx.globalCompositeOperation = 'xor';
 
         for (let x = 0; x < waveform.length; x++) {
-          const val = channel.max_sample(x) * 6;
+          const val = channel.max_sample(x) * 2;
           ctx.fillStyle = this.state.canvasTopColor;
           ctx.fillStyle = this.state.canvasColor;
           ctx.fillRect(x, scaleY(val, canvas.height), 2, val);
