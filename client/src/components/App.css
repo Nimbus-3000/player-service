@@ -1,6 +1,6 @@
 h1 {
   height: 46px;
-  width: 1240px;
+  width: 1180px;
   padding: 0px 30px;
   position: relative;
   margin: 0 auto;
@@ -14,7 +14,7 @@ h1 {
   height: 330px;
   background: linear-gradient(135deg, rgb(110, 103, 53) 0%, rgb(39, 39, 37) 100%);
   padding: 30px;
-  max-width: 1240px;
+  max-width: 1180px;
   position: relative;
   margin: 0 auto;
 }
