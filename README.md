@@ -13,14 +13,14 @@ Start Seed Script: 'npm run seedmongo'
 Path: `/api`  
 HTTP Method: POST  
 Inputs:  
-   -req.data is JSON object conforming to Song schema (below)  
+   * req.data is JSON object conforming to Song schema (below)  
 Response:  
-   -Error code 400 if operation failed, or  
-   -Success JSON object containing:  
-      -nMatched: (0) number of documents found with matching _id to inserted document  
-      -nUpserted: (1) number of documents inserted  
-      -nModified: (0) number of documents modified by query  
-      -_id: _id of inserted document  
+   * Error code 400 if operation failed, or  
+   * Success JSON object containing:  
+      * nMatched: (0) number of documents found with matching _id to inserted document  
+      * nUpserted: (1) number of documents inserted  
+      * nModified: (0) number of documents modified by query  
+      * _id: _id of inserted document  
 
 ### Read (Random)  
 Path: `/api`  
