@@ -14,9 +14,7 @@ Path: `/api`
 HTTP Method: POST  
 Inputs: req.data is JSON object conforming to Song schema (below)  
 Response: Error code 400 if operation failed, or success JSON object containing:  
-  * nMatched: (0) number of documents found with matching `_id` to inserted document  
-  * nUpserted: (1) number of documents inserted  
-  * nModified: (0) number of documents modified by query  
+  * nCreated: (1) number of documents inserted  
   * `_id`: `_id` of inserted document  
 
 ### Read (Random)  
@@ -36,8 +34,6 @@ Path: `/api`
 HTTP Method: PUT  
 Inputs: req.data is JSON object conforming to Song schema (below)  
 Response: Error code 404 if matching `_id` not found, or success JSON object containing:  
-  * acknowledged: (true) boolean indicating if request was accepted  
-  * matchedCount: (1) number of documents found with matching `_id`  
   * modifiedCount: (1) number of documents modified  
 
 ### Delete  
@@ -45,7 +41,6 @@ Path: `/api/:_id` (ex: `/api/5` for `_id` of 5)
 HTTP Method: DELETE  
 Inputs: `_id` as URL parameter  
 Response: Error code 404 if matching `_id` not found, or success JSON object containing:  
-  * acknowledged: (true) boolean indicating if request was accepted  
   * deletedCount: (1) number of documents deleted  
     
 ### Song Schema  

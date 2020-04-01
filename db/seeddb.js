@@ -9,7 +9,7 @@ const songSchema = new mongoose.Schema({
   songTitle: String,
   mediaFile: String,
   postDate: Date,
-  tag: [String, String, String],
+  tag: [String],
   albumCover: String,
   comments: [{
     username: String,
