@@ -1,17 +1,16 @@
 // database
-
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/top_player_db', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/player', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const songSchema = new mongoose.Schema({
+  _id: Number,
   artistName: String,
   songTitle: String,
   mediaFile: String,
   postDate: Date,
   tag: [String, String, String],
   albumCover: String,
-  _id: Number,
   comments: [{
     username: String,
     avatar: String,
@@ -22,28 +21,38 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-const getAllSongs = (callback) => {
-  Song.find({})
-    .then((data) => {
-      callback(null, data);
-    })
-    .catch(() => {
-      callback(true);
-    });
+// calls cb with result of inserting data representing single song
+const createSong = (data, callback) => {
+  const song = new Song(data);
+  song.save()
+    .then(success => callback(null, success))
+    .catch(err => callback(err, null));
 };
 
-const getOneSong = (callback) => {
-  const random = Math.floor(Math.random() * 100);
-  Song.find()
-    .skip(random)
-    .limit(1)
-    .then((data) => {
-      callback(null, data);
-    })
-    .catch(() => {
-      callback(true);
-    });
+// calls cb with song with input id, if found in database
+const readSong = (_id, callback) => {
+  Song.find({ _id })
+    .then(data => callback(null, data[0]))
+    .catch((err) => callback(err, null));
 };
 
-module.exports.getAllSongs = getAllSongs;
-module.exports.getOneSong = getOneSong;
+// calls cb with result of updating song with id found in input data object
+const updateSong = (data, callback) => {
+  Song.updateOne({ _id: data._id }, { $set: data })
+    .then(success => callback(null, success))
+    .catch(err => callback(err, null));
+};
+
+// calls cb with result of deleting song with input id
+const deleteSong = (_id, callback) => {
+  Song.deleteOne({ _id })
+    .then(success => callback(null, success))
+    .catch(err => callback(err, null));
+}
+
+module.exports = {
+  createSong,
+  readSong,
+  updateSong,
+  deleteSong,
+};

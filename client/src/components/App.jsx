@@ -14,10 +14,7 @@ import styles from './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      song: [],
-      waveformData: undefined,
-    };
+    this.state = {};
     this.getSongData = this.getSongData.bind(this);
   }
 
@@ -26,40 +23,33 @@ class App extends React.Component {
   }
 
   getSongData() {
-    $.get('/songData')
-      .done((data) => {
-        this.setState({ song: data });
-      })
-      .fail(() => {
-        // eslint-disable-next-line no-console
-        console.log('error with get request');
-      });
+    $.get('/api')
+      .done(data => this.setState(data, () => console.log(this.state)))
+      .fail(() => console.log('error with get request'));
   }
 
   render() {
-    const songData = this.state.song[0];
 
-    if (songData) {
+    if (this.state.songTitle) {
       return (
         <div>
           <h1>audib.ly</h1>
           <div className="TP-topPlayer">
             <PlayButton
               className="TP-playComponent"
-              songTitle={songData.songTitle}
-              artistName={songData.artistName}
-              mediaFile={songData.mediaFile}
-              comments={songData.comments}
+              songTitle={this.state.songTitle}
+              artistName={this.state.artistName}
+              mediaFile={this.state.mediaFile}
+              comments={this.state.comments}
             />
             <AlbumCover
-              albumArt={songData.albumCover}
-              songTitle={songData.songTitle}
+              albumArt={this.state.albumCover}
+              songTitle={this.state.songTitle}
             />
             <SongInfo
-              date={songData.postDate}
-              tag={songData.tag}
+              date={this.state.postDate}
+              tag={this.state.tag}
             />
-
           </div>
         </div>
       );

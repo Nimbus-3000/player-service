@@ -1,8 +1,7 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/top_player_db', { useNewUrlParser: true });
-
+mongoose.connect('mongodb://localhost:27017/player', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const songSchema = new mongoose.Schema({
   _id: Number,
@@ -22,13 +21,10 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-
 const firstname = faker.name.firstName;
 const songTitle = faker.lorem.words;
-// const mediaFile;
 const postDate = faker.date.past;
 const tag = faker.lorem.word;
-const albumCover = faker.image.abstract;
 const comments = () => {
   const commentArr = [];
   while (commentArr.length < 10) {
@@ -45,11 +41,12 @@ const comments = () => {
 
 
 const seedData = [];
-while (seedData.length < 100) {
+for (let i = 0; i < 100; i++) {
   let randomImg = Math.floor(Math.random() * 10);
   let randomSong = Math.floor(Math.random() * 11);
   const song = new Song(
     {
+      _id: i,
       artistName: firstname(),
       songTitle: songTitle(),
       mediaFile: `https://audiblymedia.s3-us-west-1.amazonaws.com/audio/${randomSong}.mp3`,
@@ -62,4 +59,4 @@ while (seedData.length < 100) {
   seedData.push(song);
 }
 
-Song.collection.insertMany(seedData);
+Song.collection.insertMany(seedData, () => process.exit());
