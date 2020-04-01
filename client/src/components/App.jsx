@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   getSongData() {
-    $.get('/api')
+    $.get('/api/songs')
       .done(data => this.setState(data, () => console.log(this.state)))
       .fail(() => console.log('error with get request'));
   }

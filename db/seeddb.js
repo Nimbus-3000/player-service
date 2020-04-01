@@ -11,11 +11,12 @@ const songSchema = new mongoose.Schema({
   postDate: Date,
   tag: [String],
   albumCover: String,
-  comments: [{
-    username: String,
-    avatar: String,
-    comment: String,
-  },
+  comments: [
+    {
+      username: String,
+      avatar: String,
+      comment: String,
+    },
   ],
 });
 
