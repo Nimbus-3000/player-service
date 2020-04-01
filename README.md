@@ -7,9 +7,9 @@ Start Server: 'npm run server-dev'
 Start Seed Script: 'npm run seedmongo'  
 
 
-# API Routes
+## API Routes
 
-# Create  
+### Create  
 Path: `/api`  
 HTTP Method: POST  
 Inputs:  
@@ -22,7 +22,7 @@ Response:
     -nModified: (0) number of documents modified by query  
     -_id: _id of inserted document  
 
-# Read (RANDOM)  
+### Read (RANDOM)  
 Path: `/api`  
 HTTP Method: GET  
 Inputs: None  
@@ -30,7 +30,7 @@ Response:
   -Error code 404 if operation failed, or  
   -Success JSON object conforming to Song schema (below) with randomly chosen _id  
 
-# Read  
+### Read  
 Path: `/api/:_id` (ex: `/api/5` for _id = 5)  
 HTTP Method: GET  
 Inputs:  
@@ -39,7 +39,7 @@ Response:
   -Error code 404 if matching _id not found, or  
   -Success JSON object conforming to Song schema (below) with matching _id  
 
-# Update  
+### Update  
 Path: `/api`  
 HTTP Method: PUT  
 Inputs:  
@@ -51,7 +51,7 @@ Response:
     -matchedCount: (1) number of documents found with matching _id  
     -modifiedCount: (1) number of documents modified  
 
-# Delete  
+### Delete  
 Path: `/api/:_id` (ex: `/api/5` for _id = 5)  
 HTTP Method: DELETE  
 Inputs:  
@@ -62,8 +62,9 @@ Response:
     -acknowledged: (true) boolean indicating if request was accepted  
     -deletedCount: (1) number of documents deleted  
     
-# Song Schema  
-```{
+### Song Schema  
+```
+{
   _id: Number,
   artistName: String,
   songTitle: String,
@@ -78,4 +79,5 @@ Response:
       comment: String,
     }
   ]
-}```
+}
+```
