@@ -67,7 +67,7 @@ Response: JSON object:
   songTitle: String,
   mediaFile: String,
   postDate: Date,
-  tag: [String, String, String],
+  tag: [String],
   albumCover: String,
   comments: [
     {
