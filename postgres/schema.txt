@@ -1,0 +1,40 @@
+Table genres {
+  id int [pk, increment]
+  name varchar(40)
+}
+
+Table artists {
+  id int [pk, increment]
+  name varchar(40)
+}
+
+Table songs {
+  id int [pk, increment]
+  name varchar(40)
+  postDate varchar(10)
+  length int
+  mediaFile varchar(300)
+  albumId int [ref: > albums.id]
+  genreId int [ref: > genres.id]
+ }
+
+Table albums {
+  id int [pk, increment]
+  name varchar(40)
+  cover varchar(300)
+  artistId int [ref: > artists.id]
+}
+
+Table comments {
+  id int [pk, increment]
+  comment varchar(200)
+  time int
+  songId int [ref: > songs.id]
+  userId int [ref: > users.id]
+}
+
+Table users {
+  id int [pk, increment]
+  name varchar(20)
+  avatar varchar(300)
+}
