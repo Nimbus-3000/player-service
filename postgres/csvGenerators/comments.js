@@ -4,6 +4,7 @@ const fs = require('fs');
 
 const writeComments = fs.createWriteStream(path.resolve(__dirname, '../data/comments.csv'));
 
+// create 50M comments
 const dataGen = (writer, encoding, callback) => {
   let i = 50000000;
   let id = 0;
@@ -22,10 +23,12 @@ const dataGen = (writer, encoding, callback) => {
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
+
     if (i > 0) {
       writer.once('drain', write);
     }
   }
+
   writer.write(`id,comment,time,songId,userId\n`, 'utf8', () => {
     console.log('Starting comments...');
     console.time('Comments');

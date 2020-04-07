@@ -3,11 +3,6 @@ Table genres {
   name varchar(40)
 }
 
-Table artists {
-  id int [pk, increment]
-  name varchar(40)
-}
-
 Table songs {
   id int [pk, increment]
   name varchar(40)
@@ -22,7 +17,7 @@ Table albums {
   id int [pk, increment]
   name varchar(40)
   cover varchar(300)
-  artistId int [ref: > artists.id]
+  userId int [ref: > users.id]
 }
 
 Table comments {
