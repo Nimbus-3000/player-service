@@ -2,40 +2,33 @@ DROP SCHEMA IF EXISTS nimbus CASCADE;
 CREATE SCHEMA nimbus;
 
 CREATE TABLE nimbus.genres (
-  id INT NOT NULL PRIMARY KEY,
-  name VARCHAR (20) NOT NULL
+  genreId SERIAL PRIMARY KEY,
+  genreName VARCHAR (20) NOT NULL
 );
 
 CREATE TABLE nimbus.users (
-  id INT NOT NULL PRIMARY KEY,
-  name VARCHAR (30) NOT NULL,
-  avatar VARCHAR (5) NOT NULL
-);
-
-CREATE TABLE nimbus.albums (
-  id INT NOT NULL PRIMARY KEY,
-  name VARCHAR (40) NOT NULL,
-  cover VARCHAR (5),
-  userId int NOT NULL
-  -- FOREIGN KEY (userId) REFERENCES nimbus.users (id)
+  userId SERIAL PRIMARY KEY,
+  userName VARCHAR (30) NOT NULL,
+  userAvatar VARCHAR (5) NOT NULL
 );
 
 CREATE TABLE nimbus.songs (
-  id INT NOT NULL PRIMARY KEY,
-  name VARCHAR (40) NOT NULL,
-  postDate VARCHAR(10),
-  length SMALLINT NOT NULL,
-  mediaFile SMALLINT NOT NULL,
-  albumId INT NOT NULL,
+  songId SERIAL PRIMARY KEY,
+  songName VARCHAR (40) NOT NULL,
+  songDate VARCHAR (10),
+  songLength SMALLINT NOT NULL,
+  songFile SMALLINT NOT NULL,
+  coverFile VARCHAR (5) NOT NULL,
+  artistId INT NOT NULL,
   genreId INT NOT NULL
-  -- FOREIGN KEY (albumId) REFERENCES nimbus.albums (id),
+  -- FOREIGN KEY (artistId) REFERENCES nimbus.users (id),
   -- FOREIGN KEY (genreId) REFERENCES nimbus.genres (id)
 );
 
 CREATE TABLE nimbus.comments (
-  id INT NOT NULL PRIMARY KEY,
-  comment VARCHAR (200),
-  time SMALLINT NOT NULL,
+  commentId SERIAL PRIMARY KEY,
+  commentText VARCHAR (100),
+  commentTime SMALLINT NOT NULL,
   songId INT NOT NULL,
   userID INT NOT NULL
   -- FOREIGN KEY (songId) REFERENCES nimbus.songs (id),

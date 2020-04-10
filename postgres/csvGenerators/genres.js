@@ -12,8 +12,7 @@ const dataGen = () => {
 
   for (let i = 0; i < 1000; i++) {
     writer.write({
-      id: i,
-      name: faker.lorem.word()
+      genreName: faker.lorem.word()
     });
     
     if (i % 100 === 0) {

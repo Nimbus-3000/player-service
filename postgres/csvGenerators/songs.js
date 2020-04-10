@@ -17,13 +17,13 @@ const dataGen = () => {
 
   for (let i = 0; i < 10000000; i++) {
     writer.write({
-      id: i,
-      name: faker.commerce.productName(),
-      postDate: `${years[Math.floor(Math.random() * 5)]}-${months[Math.floor(Math.random() * 12)]}-${days[Math.floor(Math.random() * 28)]}`,
-      length: songLengths[i % 10],
-      mediaFile: `${i % 10}`,
-      albumId: Math.floor(Math.random() * 2000000),
-      genreId: Math.floor(Math.random() * 1000)
+      songName: faker.commerce.productName(),
+      songDate: `${years[Math.floor(Math.random() * 5)]}-${months[Math.floor(Math.random() * 12)]}-${days[Math.floor(Math.random() * 28)]}`,
+      songLength: songLengths[i % 10],
+      songFile: `${i % 10}`,
+      coverFile: `${Math.floor(Math.random() * 100)}_${Math.floor(Math.random() * 10)}`,
+      artistId: (Math.floor(Math.random() * 2000000) + 1),
+      genreId: (Math.floor(Math.random() * 1000) + 1)
     });
 
     if (i % 1000000 === 0) {

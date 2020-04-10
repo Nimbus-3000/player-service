@@ -65,7 +65,6 @@ class PlayButton extends React.Component {
         });
       })
       .then(waveform => {
-        // this.setState({ waveformData: waveform });
         const scaleY = (amplitude, height) => {
           const range = 256;
           const offset = 128;
@@ -73,13 +72,10 @@ class PlayButton extends React.Component {
         };
 
         const channel = waveform.channel(0);
-        // console.log('CAHNNEL', channel)
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
 
         ctx.beginPath();
-        // ctx.globalCompositeOperation = 'xor';
-
         for (let x = 0; x < waveform.length; x++) {
           const val = channel.max_sample(x) * 2;
           ctx.fillStyle = this.state.canvasTopColor;
@@ -98,13 +94,11 @@ class PlayButton extends React.Component {
   playSong(song) {
     song.play();
     this.setState({ paused: song.paused, playState: 'pause' });
-    // console.log(song.paused);
   }
 
   pauseSong(song) {
     song.pause();
     this.setState({ paused: song.paused, playState: 'play' });
-    // console.log(song.paused);
   }
 
   playButtonClick() {

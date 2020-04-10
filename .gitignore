@@ -1,3 +1,4 @@
 node_modules/
 postgres/data/
 cassandra/data/
+.env
