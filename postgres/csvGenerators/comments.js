@@ -13,7 +13,7 @@ const dataGen = (writer, encoding, callback) => {
     do {
       i--;
       id++;
-      const data = `${id},${faker.lorem.sentence(10)},${Math.floor(Math.random() * 150)},${Math.floor(Math.random() * 10000000)},${Math.floor(Math.random() * 10000000)}\n`;
+      const data = `${faker.lorem.sentence(8)},${Math.floor(Math.random() * 150)},${Math.floor(Math.random() * 10000000) + 1},${Math.floor(Math.random() * 10000000) + 1}\n`;
       if (id % 5000000 === 0) {
         console.log(`${id / 500000}% done...`);
       }
@@ -29,7 +29,7 @@ const dataGen = (writer, encoding, callback) => {
     }
   }
 
-  writer.write(`id,comment,time,songId,userId\n`, 'utf8', () => {
+  writer.write(`commentText,commentTime,songId,userId\n`, 'utf8', () => {
     console.log('Starting comments...');
     console.time('Comments');
     write();

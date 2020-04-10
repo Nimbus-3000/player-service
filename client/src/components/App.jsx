@@ -19,36 +19,42 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getSongData();
+    this.getSongData(Math.floor(Math.random() * 10000000) + 1);
   }
 
-  getSongData() {
-    $.get('/api/songs')
-      .done(data => this.setState(data, () => console.log(this.state)))
+  getSongData(id) {
+    $.get(`/api/songs/${id}`)
+      .done(data => {
+        data.songfile = `https://nimbus-3000.s3-us-west-1.amazonaws.com/songs/${data.songfile}.mp3`;
+        data.coverfile = `https://eric-liu-turntable.s3-us-west-1.amazonaws.com/${data.coverfile}`;
+        for (let comment of data.comments) {
+          comment.useravatar = `https://eric-liu-turntable.s3-us-west-1.amazonaws.com/${comment.useravatar}`;
+        }
+        this.setState(data, () => console.log(this.state))
+      })
       .fail(() => console.log('error with get request'));
   }
 
   render() {
-
-    if (this.state.songTitle) {
+    if (this.state.songname) {
       return (
         <div>
           <h1>audib.ly</h1>
           <div className="TP-topPlayer">
             <PlayButton
               className="TP-playComponent"
-              songTitle={this.state.songTitle}
-              artistName={this.state.artistName}
-              mediaFile={this.state.mediaFile}
+              songTitle={this.state.songname}
+              artistName={this.state.username}
+              mediaFile={this.state.songfile}
               comments={this.state.comments}
             />
             <AlbumCover
-              albumArt={this.state.albumCover}
-              songTitle={this.state.songTitle}
+              albumArt={this.state.coverfile}
+              songTitle={this.state.songname}
             />
             <SongInfo
-              date={this.state.postDate}
-              tag={this.state.tag}
+              date={this.state.songdate}
+              tag={this.state.genrename}
             />
           </div>
         </div>

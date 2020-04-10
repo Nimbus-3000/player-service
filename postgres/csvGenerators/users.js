@@ -12,9 +12,8 @@ const dataGen = () => {
 
   for (let i = 0; i < 20000000; i++) {
     writer.write({
-      id: i,
-      name: `${faker.name.lastName()}${faker.name.firstName()}`,
-      avatar: `${Math.floor(Math.random() * 1000)}_${Math.floor(Math.random() * 10)}`
+      userName: `${faker.name.lastName()}${faker.name.firstName()}`,
+      userAvatar: `${Math.floor(Math.random() * 100)}_${Math.floor(Math.random() * 10)}`
     });
     
     if (i % 2000000 === 0) {

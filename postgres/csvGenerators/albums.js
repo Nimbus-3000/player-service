@@ -12,10 +12,9 @@ const dataGen = () => {
   
   for (let i = 0; i < 2000000; i++) {
     writer.write({
-      id: i,
       name: faker.commerce.productName(),
-      cover: `${Math.floor(Math.random() * 1000)}_${Math.floor(Math.random() * 10)}`,
-      userId: Math.floor(Math.random() * 1000000) // only first 1M users have albums
+      cover: `${Math.floor(Math.random() * 100)}_${Math.floor(Math.random() * 10)}`,
+      userId: (Math.floor(Math.random() * 1000000) + 1) // only first 1M users have albums
     });
 
     if (i % 200000 === 0) {

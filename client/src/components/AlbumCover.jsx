@@ -16,7 +16,6 @@ class AlbumCover extends React.Component {
   }
 
   openModal() {
-    // console.log('click')
     this.setState({ showModal: true });
   }
 
@@ -32,7 +31,7 @@ class AlbumCover extends React.Component {
           className="TP-artContainer"
           onClick={this.openModal}
         >
-          <img className="TP-albumArt" src={this.props.albumArt} alt="" />
+          <img className="TP-albumArt" src={this.props.albumArt} alt="" crossOrigin='anonymous' />
         </div>
         <ReactModal
           className="TP-modal"
@@ -40,7 +39,7 @@ class AlbumCover extends React.Component {
         >
           <div onClick={this.closeModal} className="TP-modalContent">
             <p className="TP-modalText">{this.props.songTitle}</p>
-            <img className="TP-modalImg" src={this.props.albumArt} alt=""/>
+            <img className="TP-modalImg" src={this.props.albumArt} alt="" crossOrigin='anonymous' />
           </div>
         </ReactModal>
       </div>
