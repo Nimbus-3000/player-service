@@ -7,7 +7,7 @@
     "test": "jest",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "server:pg": "nodemon pgServer/index.js",
+    "server:pg": "nodemon --max-old-space-size=8192 pgServer/index.js",
     "lint": "eslint ./",
     "seed:postgres": "time postgres/generateAndSeed.sh",
     "seed:cassandra": "time cassandra/generateAndSeed.sh"
@@ -55,6 +55,7 @@
     "moment": "^2.24.0",
     "moment-duration-format": "^2.3.2",
     "mongoose": "^5.9.4",
+    "newrelic": "^6.5.0",
     "nodemon": "^2.0.2",
     "pg": "^8.0.0",
     "react": "^16.13.0",

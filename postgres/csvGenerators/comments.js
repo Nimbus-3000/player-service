@@ -13,7 +13,7 @@ const dataGen = (writer, encoding, callback) => {
     do {
       i--;
       id++;
-      const data = `${faker.lorem.sentence(8)},${Math.floor(Math.random() * 150)},${Math.floor(Math.random() * 10000000) + 1},${Math.floor(Math.random() * 10000000) + 1}\n`;
+      const data = `${faker.lorem.sentence(10)},${Math.floor(Math.random() * 150)},${Math.floor(Math.random() * 10000000) + 1},${Math.floor(Math.random() * 10000000) + 1}\n`;
       if (id % 5000000 === 0) {
         console.log(`${id / 500000}% done...`);
       }

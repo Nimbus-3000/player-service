@@ -21,16 +21,16 @@ CREATE TABLE nimbus.songs (
   coverFile VARCHAR (5) NOT NULL,
   artistId INT NOT NULL,
   genreId INT NOT NULL
-  -- FOREIGN KEY (artistId) REFERENCES nimbus.users (id),
-  -- FOREIGN KEY (genreId) REFERENCES nimbus.genres (id)
+  -- FOREIGN KEY (artistId) REFERENCES nimbus.users (userId),
+  -- FOREIGN KEY (genreId) REFERENCES nimbus.genres (genreId)
 );
 
 CREATE TABLE nimbus.comments (
   commentId SERIAL PRIMARY KEY,
-  commentText VARCHAR (100),
+  commentText VARCHAR (200),
   commentTime SMALLINT NOT NULL,
   songId INT NOT NULL,
   userID INT NOT NULL
-  -- FOREIGN KEY (songId) REFERENCES nimbus.songs (id),
-  -- FOREIGN KEY (userId) REFERENCES nimbus.users (id)
+  -- FOREIGN KEY (songId) REFERENCES nimbus.songs (songId),
+  -- FOREIGN KEY (userId) REFERENCES nimbus.users (userId)
 );

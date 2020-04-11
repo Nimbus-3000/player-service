@@ -24,15 +24,23 @@ class App extends React.Component {
 
   getSongData(id) {
     $.get(`/api/songs/${id}`)
-      .done(data => {
-        data.songfile = `https://nimbus-3000.s3-us-west-1.amazonaws.com/songs/${data.songfile}.mp3`;
-        data.coverfile = `https://eric-liu-turntable.s3-us-west-1.amazonaws.com/${data.coverfile}`;
-        for (let comment of data.comments) {
-          comment.useravatar = `https://eric-liu-turntable.s3-us-west-1.amazonaws.com/${comment.useravatar}`;
-        }
-        this.setState(data, () => console.log(this.state))
+      .done(songData => {
+        songData.songfile = `https://nimbus-3000.s3-us-west-1.amazonaws.com/songs/${songData.songfile}.mp3`;
+        songData.coverfile = `https://eric-liu-turntable.s3-us-west-1.amazonaws.com/${songData.coverfile}`;
+        songData.comments = [];
+        this.setState(songData, () => {
+          $.get(`/api/comments/songid/${songData.songid}`)
+            .done(commentData => {
+              for (let comment of commentData) {
+                comment.useravatar = `https://eric-liu-turntable.s3-us-west-1.amazonaws.com/${comment.useravatar}`;
+              }
+              songData.comments = commentData;
+              this.setState(songData, () => console.log(this.state));
+            })
+            .fail(() => console.log('comments GET request failed'));
+        })
       })
-      .fail(() => console.log('error with get request'));
+      .fail(() => console.log('song GET request failed'));
   }
 
   render() {

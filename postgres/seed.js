@@ -31,11 +31,11 @@ client.connect()
     console.timeEnd('Seeding comments');
     console.log('Adding foreign keys...');
     console.time('Foreign keys');
-    return client.query(`ALTER TABLE nimbus.songs ADD CONSTRAINT songArtist FOREIGN KEY (artistId) REFERENCES nimbus.users (id)`);
+    return client.query(`ALTER TABLE nimbus.songs ADD CONSTRAINT songArtist FOREIGN KEY (artistId) REFERENCES nimbus.users (userId)`);
   })
-  .then(() => client.query(`ALTER TABLE nimbus.songs ADD CONSTRAINT songGenre FOREIGN KEY (genreId) REFERENCES nimbus.genres (id)`))
-  .then(() => client.query(`ALTER TABLE nimbus.comments ADD CONSTRAINT commentSong FOREIGN KEY (songId) REFERENCES nimbus.songs (id) ON DELETE CASCADE`))
-  .then(() => client.query(`ALTER TABLE nimbus.comments ADD CONSTRAINT commentUser FOREIGN KEY (userId) REFERENCES nimbus.users (id) ON DELETE CASCADE`))
+  .then(() => client.query(`ALTER TABLE nimbus.songs ADD CONSTRAINT songGenre FOREIGN KEY (genreId) REFERENCES nimbus.genres (genreId)`))
+  .then(() => client.query(`ALTER TABLE nimbus.comments ADD CONSTRAINT commentSong FOREIGN KEY (songId) REFERENCES nimbus.songs (songId) ON DELETE CASCADE`))
+  .then(() => client.query(`ALTER TABLE nimbus.comments ADD CONSTRAINT commentUser FOREIGN KEY (userId) REFERENCES nimbus.users (userId) ON DELETE CASCADE`))
   .then(() => {
     console.timeEnd('Foreign keys');
     console.log('Indexing database...');
