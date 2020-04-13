@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js",
-    "server:pg": "nodemon --max-old-space-size=8192 pgServer/index.js",
+    "build": "webpack -d --watch",
+    "start": "NODE_ENV=production nodemon --max-old-space-size=8192 postgres/server.js",
     "lint": "eslint ./",
     "seed:postgres": "time postgres/generateAndSeed.sh",
     "seed:cassandra": "time cassandra/generateAndSeed.sh"
